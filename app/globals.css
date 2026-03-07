@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #fffaf2;
+  --surface-alt: #f6efe2;
+  --ink: #1f2945;
+  --ink-soft: #4d597f;
+  --line: rgba(31, 41, 69, 0.12);
+  --brand: #2f3b6d;
+  --brand-accent: #ea6d58;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body), sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(234, 109, 88, 0.14), transparent 35%),
+    radial-gradient(circle at 85% 85%, rgba(119, 163, 138, 0.14), transparent 42%),
+    linear-gradient(155deg, var(--surface), #fff 42%, var(--surface-alt));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.input {
+  @apply w-full rounded-xl border border-[var(--line)] bg-white/85 px-4 py-3 text-sm text-[var(--ink)] outline-none transition;
+}
+
+.input:focus {
+  @apply border-transparent ring-2 ring-slateBlue/30;
+}
+
+.card {
+  @apply rounded-2xl border border-[var(--line)] bg-white/80 shadow-soft backdrop-blur;
+}
+
+.label {
+  @apply mb-2 block text-xs font-semibold uppercase tracking-[0.08em] text-[var(--ink-soft)];
+}
+
+.button-primary {
+  @apply inline-flex items-center justify-center rounded-xl bg-slateBlue px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slateBlue/95;
+}
+
+.button-secondary {
+  @apply inline-flex items-center justify-center rounded-xl border border-[var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--surface-alt)];
+}
