@@ -1,13 +1,20 @@
+import { getMaxOptionScore, getOptionLabel, getOptionScore } from "@/lib/assessment-options";
 import type { AssessmentData, OpportunityRecommendation, OpportunityScore, ScoredOpportunity, WorkflowPainPoint } from "@/lib/types";
 
 const round2 = (value: number): number => Math.round(value * 100) / 100;
 
 export const calculateScores = (workflow: WorkflowPainPoint): OpportunityScore => {
-  const { frequency, manualEffort, timeConsumed, errorRisk, businessImportance, easeOfAutomation } = workflow.ratings;
+  const impactFields = ["frequency", "manualEffort", "timeConsumed", "errorRisk", "businessImportance"] as const;
+  const normalizedImpactValues = impactFields.map((field) => {
+    const score = getOptionScore(field, workflow.ratings[field]);
+    return score / getMaxOptionScore(field);
+  });
 
-  const impactScore = round2(((frequency + manualEffort + timeConsumed + errorRisk + businessImportance) / 25) * 100);
-  const easeScore = round2((easeOfAutomation / 5) * 100);
-  const priorityScore = round2(impactScore * 0.72 + easeScore * 0.28);
+  const impactScore = round2((normalizedImpactValues.reduce((sum, value) => sum + value, 0) / impactFields.length) * 100);
+  const easeScore = round2(
+    (getOptionScore("processComplexity", workflow.ratings.processComplexity) / getMaxOptionScore("processComplexity")) * 100
+  );
+  const priorityScore = round2(impactScore * 0.75 + easeScore * 0.25);
 
   return { impactScore, easeScore, priorityScore };
 };
@@ -15,6 +22,8 @@ export const calculateScores = (workflow: WorkflowPainPoint): OpportunityScore =
 const buildRecommendation = (workflow: WorkflowPainPoint, assessment: AssessmentData, score: OpportunityScore): OpportunityRecommendation => {
   const { industry } = assessment.business;
   const { priorityScore, impactScore, easeScore } = score;
+  const frequencyLabel = getOptionLabel("frequency", workflow.ratings.frequency).toLowerCase();
+  const complexityLabel = getOptionLabel("processComplexity", workflow.ratings.processComplexity).toLowerCase();
 
   let approach = "Create a lightweight workflow automation with trigger-based actions and status tracking.";
   const tools = ["Zapier", "Make", "Airtable"];
@@ -32,8 +41,8 @@ const buildRecommendation = (workflow: WorkflowPainPoint, assessment: Assessment
 
   const rationale =
     priorityScore >= 80
-      ? `High-value candidate: this workflow is very impactful (${impactScore}) and sufficiently easy to automate (${easeScore}).`
-      : `Balanced candidate: this workflow has meaningful impact (${impactScore}) with workable automation feasibility (${easeScore}).`;
+      ? `High-value candidate: this process happens ${frequencyLabel}, carries meaningful operational impact (${impactScore}), and looks ${complexityLabel}.`
+      : `Balanced candidate: this workflow shows steady impact (${impactScore}) and appears ${complexityLabel}, which keeps automation feasible (${easeScore}).`;
 
   return { rationale, approach, tools };
 };

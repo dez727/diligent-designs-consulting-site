@@ -1,3 +1,4 @@
+import { getOptionLabel } from "@/lib/assessment-options";
 import type { ScoredOpportunity } from "@/lib/types";
 
 type OpportunityCardProps = {
@@ -6,10 +7,18 @@ type OpportunityCardProps = {
 };
 
 export function OpportunityCard({ opportunity, rank }: OpportunityCardProps) {
+  const complexityLabel = getOptionLabel("processComplexity", opportunity.ratings.processComplexity);
+  const frequencyLabel = getOptionLabel("frequency", opportunity.ratings.frequency);
+
   return (
     <article className="card p-6">
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-xl">#{rank} {opportunity.workflowName}</h3>
+        <div>
+          <h3 className="text-xl">#{rank} {opportunity.workflowName}</h3>
+          <p className="mt-2 text-sm text-[var(--ink-soft)]">
+            {frequencyLabel} cadence · {complexityLabel} process
+          </p>
+        </div>
         <span className="rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slateBlue">
           Priority {opportunity.priorityScore}
         </span>

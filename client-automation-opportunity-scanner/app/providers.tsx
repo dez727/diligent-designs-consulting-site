@@ -3,13 +3,13 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { createDefaultAssessmentData } from "@/lib/defaults";
-import type { AssessmentData, BusinessProfile, WorkflowPainPoint, WorkflowRatings } from "@/lib/types";
+import type { AssessmentData, BusinessProfile, WorkflowPainPoint, WorkflowRatingField, WorkflowRatings } from "@/lib/types";
 
 type AssessmentContextValue = {
   data: AssessmentData;
   updateBusiness: (field: keyof BusinessProfile, value: string) => void;
   updateWorkflowName: (id: string, workflowName: string) => void;
-  updateWorkflowRating: (id: string, field: keyof WorkflowRatings, value: WorkflowRatings[keyof WorkflowRatings]) => void;
+  updateWorkflowRating: <TField extends WorkflowRatingField>(id: string, field: TField, value: WorkflowRatings[TField]) => void;
   addWorkflow: (name?: string) => void;
   removeWorkflow: (id: string) => void;
   reset: () => void;
@@ -21,12 +21,12 @@ const createWorkflow = (name: string): WorkflowPainPoint => ({
   id: `wf-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
   workflowName: name,
   ratings: {
-    frequency: 3,
-    manualEffort: 3,
-    timeConsumed: 3,
-    errorRisk: 3,
-    businessImportance: 3,
-    easeOfAutomation: 3
+    frequency: "weekly",
+    manualEffort: "mostlyManual",
+    timeConsumed: "oneToFiveHours",
+    errorRisk: "customerVisible",
+    businessImportance: "important",
+    processComplexity: "someExceptions"
   }
 });
 

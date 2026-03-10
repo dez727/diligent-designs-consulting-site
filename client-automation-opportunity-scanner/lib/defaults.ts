@@ -4,12 +4,12 @@ const createWorkflow = (id: string, workflowName: string): WorkflowPainPoint => 
   id,
   workflowName,
   ratings: {
-    frequency: 3,
-    manualEffort: 3,
-    timeConsumed: 3,
-    errorRisk: 3,
-    businessImportance: 3,
-    easeOfAutomation: 3
+    frequency: "weekly",
+    manualEffort: "mostlyManual",
+    timeConsumed: "oneToFiveHours",
+    errorRisk: "customerVisible",
+    businessImportance: "important",
+    processComplexity: "someExceptions"
   }
 });
 
