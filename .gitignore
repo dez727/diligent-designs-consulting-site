@@ -1,0 +1,2 @@
+# Repository-wide local secrets
+.env*
