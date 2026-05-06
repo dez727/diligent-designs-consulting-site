@@ -26,7 +26,7 @@ export function SiteNav() {
   return (
     <nav className="site-nav" aria-label="Main navigation" data-animate="fade-down">
       <Link className="brand-mark" href="/" aria-label="Diligent Designs Consulting home" onClick={() => setIsOpen(false)}>
-        <Image className="brand-logo" src="/ddc-favicon.png" alt="" width={256} height={256} priority unoptimized />
+        <Image className="brand-logo" src="/ddc-logo-nav.png" alt="" width={512} height={512} priority unoptimized />
         <span className="brand-copy">Diligent Designs Consulting</span>
       </Link>
 
