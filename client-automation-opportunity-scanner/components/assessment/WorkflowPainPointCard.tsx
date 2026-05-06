@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SegmentedControl } from "@/components/assessment/SegmentedControl";
 import { workflowQuestionList } from "@/lib/assessment-options";
 import type { WorkflowPainPoint, WorkflowRatingField, WorkflowRatings } from "@/lib/types";
@@ -19,9 +20,17 @@ export function WorkflowPainPointCard({
   onRemove,
   canRemove
 }: WorkflowPainPointCardProps) {
+  const [isConfirmingRemoval, setIsConfirmingRemoval] = useState(false);
+  const workflowName = workflow.workflowName.trim() || "this workflow";
+
+  const handleConfirmRemoval = () => {
+    onRemove(workflow.id);
+    setIsConfirmingRemoval(false);
+  };
+
   return (
     <article className="card p-6">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-[240px] flex-1">
           <label>
             <span className="label">Workflow Pain Point</span>
@@ -34,11 +43,35 @@ export function WorkflowPainPointCard({
           </label>
         </div>
         {canRemove ? (
-          <button type="button" className="button-secondary" onClick={() => onRemove(workflow.id)}>
-            Remove
+          <button
+            type="button"
+            className="button-secondary remove-workflow-button"
+            onClick={() => setIsConfirmingRemoval(true)}
+            aria-expanded={isConfirmingRemoval}
+          >
+            Remove workflow
           </button>
         ) : null}
       </div>
+
+      {isConfirmingRemoval ? (
+        <div className="workflow-remove-confirmation" role="group" aria-label={`Confirm removal of ${workflowName}`}>
+          <div>
+            <p className="label">Confirm removal</p>
+            <p>
+              Remove <strong>{workflowName}</strong> from this scan? Your other workflow scores will stay in place.
+            </p>
+          </div>
+          <div className="workflow-remove-actions">
+            <button type="button" className="button-ghost" onClick={() => setIsConfirmingRemoval(false)}>
+              Keep workflow
+            </button>
+            <button type="button" className="button-danger" onClick={handleConfirmRemoval}>
+              Remove workflow
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <div className="mt-6 grid gap-5 xl:grid-cols-2">
         {workflowQuestionList.map((question) => (
