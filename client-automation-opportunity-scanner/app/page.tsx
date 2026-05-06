@@ -8,21 +8,24 @@ const services = [
     title: "Automation strategy",
     copy: "Map recurring work, score what matters, and build the first automation where it will actually remove friction.",
     signal: "First workflow worth fixing",
-    tags: ["Process map", "Priority score", "Build path"]
+    tags: ["Process map", "Priority score", "Build path"],
+    visual: "workflow"
   },
   {
     index: "02",
     title: "Marketing analytics",
     copy: "Turn campaigns, leads, channels, and follow-up activity into reporting that supports better decisions.",
     signal: "Cleaner decision surface",
-    tags: ["Attribution", "Dashboard", "Next action"]
+    tags: ["Attribution", "Dashboard", "Next action"],
+    visual: "analytics"
   },
   {
     index: "03",
     title: "AI implementation",
     copy: "Use AI where it fits the workflow: intake, routing, drafts, summaries, internal tools, and decision support.",
     signal: "Practical AI in motion",
-    tags: ["Summaries", "Routing", "Internal tools"]
+    tags: ["Summaries", "Routing", "Internal tools"],
+    visual: "ai"
   }
 ];
 
@@ -169,11 +172,56 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="service-visual" aria-hidden="true">
-                <strong>{service.signal}</strong>
-                <i />
-                <i />
-                <i />
+              <div className={`service-visual service-visual-${service.visual}`} aria-hidden="true">
+                {service.visual === "workflow" ? (
+                  <>
+                    <div className="workflow-map-preview">
+                      <span>Intake</span>
+                      <i />
+                      <span>Score</span>
+                      <i />
+                      <span>Build</span>
+                    </div>
+                    <div className="visual-score">
+                      <small>Priority</small>
+                      <strong>87</strong>
+                    </div>
+                    <p>{service.signal}</p>
+                  </>
+                ) : null}
+
+                {service.visual === "analytics" ? (
+                  <>
+                    <div className="analytics-preview">
+                      <span />
+                      <span />
+                      <span />
+                      <span />
+                      <i />
+                    </div>
+                    <div className="decision-strip">
+                      <span>Source clarity</span>
+                      <strong>Next best action</strong>
+                    </div>
+                    <p>{service.signal}</p>
+                  </>
+                ) : null}
+
+                {service.visual === "ai" ? (
+                  <>
+                    <div className="ai-routing-preview">
+                      <span>Lead summary</span>
+                      <span>Route to owner</span>
+                      <span>Human review</span>
+                    </div>
+                    <div className="ai-pulse-preview">
+                      <i />
+                      <i />
+                      <i />
+                    </div>
+                    <p>{service.signal}</p>
+                  </>
+                ) : null}
               </div>
             </article>
           ))}
