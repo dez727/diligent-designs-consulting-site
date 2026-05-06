@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScrollAnimations } from "@/app/ScrollAnimations";
 
 const services = [
   {
@@ -32,8 +33,9 @@ const process = [
 export default function HomePage() {
   return (
     <main>
+      <ScrollAnimations />
       <section className="hero-shell">
-        <nav className="site-nav" aria-label="Main navigation">
+        <nav className="site-nav" aria-label="Main navigation" data-animate="fade-down">
           <Link className="brand-mark" href="/">
             <span className="brand-monogram">DD</span>
             <span>
@@ -49,13 +51,13 @@ export default function HomePage() {
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <h1>Cleaner systems for teams ready to automate the right work.</h1>
-            <p>
+            <h1 data-animate="headline">Cleaner systems for teams ready to automate the right work.</h1>
+            <p data-animate="fade-up" className="delay-1">
               AI, automation, and digital marketing strategy for small and medium-size businesses that need clearer
               reporting, faster follow-up, and practical systems they can trust.
             </p>
 
-            <div className="hero-actions">
+            <div className="hero-actions delay-2" data-animate="fade-up">
               <Link className="button-primary" href="/scanner">
                 Run the Scanner
               </Link>
@@ -65,7 +67,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="system-map" aria-label="Automation and analytics system preview">
+          <div className="system-map delay-2" aria-label="Automation and analytics system preview" data-animate="map">
             <div className="map-header">
               <span>Workflow signal</span>
               <strong>Automation readiness</strong>
@@ -93,7 +95,7 @@ export default function HomePage() {
             </div>
             <div className="map-score">
               <span>Priority score</span>
-              <strong>87</strong>
+              <strong data-count-to="87">0</strong>
             </div>
           </div>
         </div>
@@ -101,11 +103,11 @@ export default function HomePage() {
 
       <section className="section-band intro-band">
         <div className="section-grid">
-          <div>
+          <div data-animate="fade-up">
             <p className="eyebrow">Practical AI Adoption</p>
             <h2>Build around the business you already run.</h2>
           </div>
-          <p>
+          <p className="delay-1" data-animate="fade-up">
             The goal is not more software for its own sake. It is better handoffs, cleaner data, stronger follow-up, and
             marketing decisions that are easier to act on.
           </p>
@@ -114,26 +116,28 @@ export default function HomePage() {
 
       <section className="section-wrap">
         <div className="problem-layout">
-          <div>
+          <div data-animate="fade-up">
             <p className="eyebrow">Where We Help</p>
             <h2>When work is moving, but the system is not keeping up.</h2>
           </div>
           <div className="signal-list">
-            {signals.map((signal) => (
-              <p key={signal}>{signal}</p>
+            {signals.map((signal, index) => (
+              <p className={`delay-${index + 1}`} data-animate="signal" key={signal}>
+                {signal}
+              </p>
             ))}
           </div>
         </div>
       </section>
 
       <section className="section-wrap services-section">
-        <div className="section-heading">
+        <div className="section-heading" data-animate="fade-up">
           <p className="eyebrow">Consulting Focus</p>
           <h2>Strategy, automation, and analytics in one operating lane.</h2>
         </div>
         <div className="service-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.title}>
+          {services.map((service, index) => (
+            <article className={`service-card delay-${index + 1}`} data-animate="card" key={service.title}>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>
             </article>
@@ -142,22 +146,27 @@ export default function HomePage() {
       </section>
 
       <section className="section-band process-band">
-        <div className="section-heading">
-          <p className="eyebrow">Method</p>
-          <h2>Find the first useful improvement, then build from there.</h2>
-        </div>
-        <div className="process-grid">
-          {process.map(([step, title, copy]) => (
-            <article key={step}>
-              <span>{step}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+        <div className="process-inner">
+          <div className="section-heading process-heading" data-animate="fade-up">
+            <p className="eyebrow">Method</p>
+            <h2>Find the first useful improvement, then build from there.</h2>
+            <div className="process-progress" aria-hidden="true">
+              <span />
+            </div>
+          </div>
+          <div className="process-grid">
+            {process.map(([step, title, copy], index) => (
+              <article className={`delay-${index + 1}`} data-animate="process" data-process-step key={step}>
+                <span>{step}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-wrap scanner-feature">
+      <section className="section-wrap scanner-feature" data-animate="fade-up">
         <div className="scanner-copy">
           <p className="eyebrow">Featured Tool</p>
           <h2>Start with the Automation Opportunity Scanner.</h2>
@@ -169,7 +178,7 @@ export default function HomePage() {
             Open the Scanner
           </Link>
         </div>
-        <div className="scanner-panel">
+        <div className="scanner-panel delay-1" data-animate="scanner-panel">
           <div className="panel-row top">
             <span>Top candidate</span>
             <strong>Customer follow-up routing</strong>
@@ -192,12 +201,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="final-cta">
-        <div>
+      <section className="final-cta" data-animate="cta">
+        <div data-animate="fade-up">
           <h2>Ready to clean up the next system?</h2>
           <p>Bring the workflow, the reporting problem, or the marketing question. We will find the first practical move.</p>
         </div>
-        <a className="button-secondary dark" href="mailto:hello@diligentdesignsconsulting.com">
+        <a className="button-secondary dark delay-1" href="mailto:hello@diligentdesignsconsulting.com" data-animate="fade-up">
           Start a Conversation
         </a>
       </section>
