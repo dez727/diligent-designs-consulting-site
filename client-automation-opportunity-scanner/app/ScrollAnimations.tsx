@@ -21,6 +21,7 @@ export function ScrollAnimations() {
       const scrollable = root.scrollHeight - window.innerHeight;
       const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
       root.style.setProperty("--scroll-progress", String(Math.min(Math.max(progress, 0), 1)));
+      root.style.setProperty("--scroll-y", String(Math.round(window.scrollY)));
     };
 
     let ticking = false;
@@ -99,12 +100,19 @@ export function ScrollAnimations() {
       countObserver.disconnect();
       root.classList.remove("motion-ready", "motion-reduced");
       root.style.removeProperty("--scroll-progress");
+      root.style.removeProperty("--scroll-y");
     };
   }, []);
 
   return (
-    <div className="scroll-progress" aria-hidden="true">
-      <span />
-    </div>
+    <>
+      <div className="scroll-progress" aria-hidden="true">
+        <span />
+      </div>
+      <div className="scroll-depth" aria-hidden="true">
+        <span>System depth</span>
+        <strong />
+      </div>
+    </>
   );
 }

@@ -80,6 +80,37 @@ body {
   }
 }
 
+@keyframes scan-sweep {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes rail-flow {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 46px 0;
+  }
+}
+
+@keyframes depth-tick {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -228,7 +259,7 @@ h6 {
   top: 0;
   z-index: 50;
   width: 100%;
-  height: 3px;
+  height: 4px;
   pointer-events: none;
 }
 
@@ -241,9 +272,44 @@ h6 {
   transform-origin: left center;
 }
 
+.scroll-depth {
+  position: fixed;
+  right: 1.1rem;
+  top: 50%;
+  z-index: 45;
+  display: none;
+  width: 2px;
+  height: 8.5rem;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.scroll-depth strong {
+  position: absolute;
+  inset: 0 0 auto;
+  display: block;
+  height: calc(var(--scroll-progress) * 100%);
+  background: linear-gradient(180deg, var(--silver), var(--signal-red), var(--brand));
+}
+
+.scroll-depth span {
+  position: absolute;
+  right: 0.75rem;
+  top: 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  transform-origin: right top;
+  white-space: nowrap;
+}
+
 .motion-ready [data-animate] {
   opacity: 0;
-  transform: translate3d(0, 28px, 0);
+  transform: translate3d(0, 46px, 0);
   transition:
     opacity 0.85s ease,
     transform 0.85s cubic-bezier(0.2, 0.72, 0.18, 1),
@@ -255,21 +321,21 @@ h6 {
 }
 
 .motion-ready [data-animate="fade-down"] {
-  transform: translate3d(0, -18px, 0);
+  transform: translate3d(0, -28px, 0);
 }
 
 .motion-ready [data-animate="signal"] {
-  transform: translate3d(30px, 0, 0);
+  transform: translate3d(56px, 0, 0);
 }
 
 .motion-ready [data-animate="card"],
 .motion-ready [data-animate="process"] {
-  transform: translate3d(0, 34px, 0) scale(0.98);
+  transform: translate3d(0, 54px, 0) scale(0.965);
 }
 
 .motion-ready [data-animate="map"],
 .motion-ready [data-animate="scanner-panel"] {
-  transform: translate3d(0, 38px, 0) scale(0.97);
+  transform: translate3d(0, 60px, 0) scale(0.955);
 }
 
 .motion-ready [data-animate="cta"] {
@@ -299,6 +365,8 @@ h6 {
 }
 
 .hero-shell {
+  position: relative;
+  overflow: hidden;
   min-height: 92vh;
   padding: 1.25rem;
   color: #fff;
@@ -307,7 +375,36 @@ h6 {
     linear-gradient(135deg, #090a0c 0%, #171a1f 58%, #2a1116 100%);
 }
 
+.hero-shell::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-position:
+    0 calc(var(--scroll-y, 0) * -0.08px),
+    calc(var(--scroll-y, 0) * 0.06px) 0;
+  background-size: 44px 44px;
+  content: "";
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.hero-shell::after {
+  position: absolute;
+  left: -10%;
+  top: 0;
+  width: 120%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(226, 59, 75, 0.9), rgba(199, 204, 211, 0.75), transparent);
+  content: "";
+  opacity: 0.8;
+  transform: translateY(calc(7rem + (var(--scroll-progress) * 72vh)));
+}
+
 .site-nav {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -366,6 +463,8 @@ h6 {
 }
 
 .hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   align-items: center;
   gap: 3rem;
@@ -408,6 +507,16 @@ h6 {
   background-size: 24px 24px;
   box-shadow: 0 32px 80px -46px rgba(0, 0, 0, 0.9);
   padding: 1.2rem;
+}
+
+.system-map::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(226, 59, 75, 0.18) 48%, rgba(255, 255, 255, 0.16) 50%, transparent 54%);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+  animation: scan-sweep 4.8s ease-in-out infinite;
 }
 
 .map-header,
@@ -459,8 +568,11 @@ h6 {
 
 .map-line {
   height: 1px;
-  background: rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(90deg, rgba(177, 18, 38, 0.9), rgba(226, 59, 75, 0.9), rgba(255, 255, 255, 0.32), rgba(177, 18, 38, 0.9));
+  background-size: 46px 1px;
   transform-origin: left center;
+  animation: rail-flow 1.45s linear infinite;
 }
 
 .map-stack {
@@ -636,8 +748,26 @@ h6 {
   transition-delay: calc(var(--delay, 0ms) + 180ms);
 }
 
+.signal-list p::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(177, 18, 38, 0.1), transparent 48%);
+  content: "";
+  opacity: 0;
+  transform: translateX(-22%);
+  transition:
+    opacity 0.5s ease,
+    transform 0.75s cubic-bezier(0.2, 0.72, 0.18, 1);
+  transition-delay: calc(var(--delay, 0ms) + 220ms);
+}
+
 .signal-list p.is-visible::after {
   transform: scaleY(1);
+}
+
+.signal-list p.is-visible::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .services-section {
@@ -674,7 +804,28 @@ h6 {
   transition-delay: calc(var(--delay, 0ms) + 160ms);
 }
 
+.service-card::after {
+  position: absolute;
+  inset: auto 1.3rem 1.3rem auto;
+  width: 2.4rem;
+  height: 2px;
+  background: var(--brand);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition:
+    opacity 0.45s ease,
+    transform 0.8s cubic-bezier(0.2, 0.72, 0.18, 1);
+  transition-delay: calc(var(--delay, 0ms) + 360ms);
+}
+
 .service-card.is-visible::before {
+  transform: scaleX(1);
+}
+
+.service-card.is-visible::after {
+  opacity: 1;
   transform: scaleX(1);
 }
 
@@ -694,7 +845,11 @@ h6 {
 }
 
 .process-band {
-  background: var(--brand-deep);
+  background-color: var(--brand-deep);
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 54px 54px;
   color: #fff;
 }
 
@@ -734,6 +889,12 @@ h6 {
   transform-origin: left center;
 }
 
+.process-band {
+  background-position:
+    calc(var(--scroll-y, 0) * -0.03px) 0,
+    0 calc(var(--scroll-y, 0) * 0.04px);
+}
+
 .process-grid article {
   position: relative;
   border-color: var(--line-dark);
@@ -759,6 +920,7 @@ h6 {
   border-color: rgba(226, 59, 75, 0.5);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 24px 70px -48px rgba(226, 59, 75, 0.9);
+  transform: translate3d(0, -2px, 0) scale(1.01);
 }
 
 .process-grid article.is-active::before {
@@ -790,6 +952,8 @@ h6 {
 }
 
 .scanner-panel {
+  position: relative;
+  overflow: hidden;
   border-color: var(--line);
   background:
     linear-gradient(rgba(16, 18, 22, 0.045) 1px, transparent 1px),
@@ -798,6 +962,20 @@ h6 {
   background-size: 24px 24px;
   box-shadow: var(--shadow);
   padding: 1.25rem;
+}
+
+.scanner-panel::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(226, 59, 75, 0.12), transparent);
+  content: "";
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.scanner-panel.is-visible::before {
+  opacity: 1;
+  animation: scan-sweep 3.4s ease-in-out 0.45s 2;
 }
 
 .scanner-panel .panel-row span,
@@ -821,6 +999,7 @@ h6 {
   border-radius: 999px;
   background: linear-gradient(90deg, var(--brand) 0%, var(--signal-red) 100%);
   transform-origin: left center;
+  box-shadow: 0 0 18px -10px rgba(226, 59, 75, 0.9);
 }
 
 .motion-ready .scanner-panel .score-bars span {
@@ -878,6 +1057,10 @@ h6 {
 }
 
 @media (min-width: 760px) {
+  .scroll-depth {
+    display: block;
+  }
+
   .hero-grid,
   .section-grid,
   .problem-layout,
@@ -936,6 +1119,11 @@ h6 {
     font-size: 3rem;
   }
 
+  .hero-shell::after {
+    left: 0;
+    width: 100%;
+  }
+
   .hero-grid {
     gap: 2rem;
     padding-bottom: 1.5rem;
@@ -943,6 +1131,20 @@ h6 {
 
   .hero-copy p {
     line-height: 1.62;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button-primary,
+  .hero-actions .button-secondary {
+    width: 100%;
+    min-height: 3.5rem;
+  }
+
+  .motion-ready [data-animate="signal"] {
+    transform: translate3d(0, 46px, 0);
   }
 
   .system-map {
@@ -965,6 +1167,10 @@ h6 {
   }
 
   .scroll-progress {
+    display: none;
+  }
+
+  .scroll-depth {
     display: none;
   }
 }
