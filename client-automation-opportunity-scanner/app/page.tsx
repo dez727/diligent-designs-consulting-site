@@ -130,7 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-wrap">
+      <section className="section-wrap problem-section">
         <div className="problem-layout">
           <div data-animate="fade-up">
             <p className="eyebrow">Where We Help</p>
