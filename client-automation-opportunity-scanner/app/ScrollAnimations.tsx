@@ -46,9 +46,13 @@ export function ScrollAnimations() {
       root.style.setProperty("--scroll-y", String(Math.round(window.scrollY)));
 
       document.querySelectorAll<HTMLElement>("[data-process-band]").forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const track = rect.height - window.innerHeight;
-        const raw = track > 0 ? (window.innerHeight - rect.top) / (rect.height + window.innerHeight * 0.15) : 0;
+        const steps = Array.from(section.querySelectorAll<HTMLElement>("[data-process-step]"));
+        const firstStep = steps[0];
+        const lastStep = steps[steps.length - 1];
+        const viewportAnchor = window.innerHeight * 0.5;
+        const firstCenter = firstStep ? firstStep.getBoundingClientRect().top + firstStep.offsetHeight / 2 : 0;
+        const lastCenter = lastStep ? lastStep.getBoundingClientRect().top + lastStep.offsetHeight / 2 : 0;
+        const raw = steps.length > 1 && lastCenter !== firstCenter ? (viewportAnchor - firstCenter) / (lastCenter - firstCenter) : 0;
         const sectionProgress = Math.min(Math.max(raw, 0), 1);
         section.style.setProperty("--process-progress", String(sectionProgress));
       });

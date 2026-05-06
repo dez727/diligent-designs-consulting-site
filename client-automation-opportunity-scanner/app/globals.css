@@ -678,11 +678,11 @@ h6 {
 
 .brand-logo {
   display: block;
-  width: clamp(7.4rem, 16vw, 9.4rem);
-  height: clamp(2.45rem, 4vw, 3rem);
+  width: clamp(2.6rem, 4vw, 3rem);
+  height: clamp(2.6rem, 4vw, 3rem);
   flex: 0 0 auto;
-  object-fit: cover;
-  object-position: center 53%;
+  border-radius: 0.45rem;
+  object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.34));
 }
 
@@ -2223,8 +2223,8 @@ h6 {
   }
 
   .brand-logo {
-    width: 7.25rem;
-    height: 2.55rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 
   .nav-toggle {
@@ -2330,6 +2330,99 @@ h6 {
     padding-top: 4.5rem;
     padding-bottom: 4.5rem;
     scroll-margin-top: 6.25rem;
+  }
+
+  .contact-copy {
+    padding-top: 0.5rem;
+  }
+
+  .contact-copy h2 {
+    margin-top: 0.7rem;
+    line-height: 1.03;
+  }
+
+  .contact-copy h2 + p {
+    margin-top: 1.25rem;
+    line-height: 1.72;
+  }
+
+  .diagnostic-panel {
+    gap: 1.45rem;
+    padding: 1.35rem;
+  }
+
+  .diagnostic-orbit {
+    width: min(21rem, 100%);
+  }
+
+  .orbit-ring.outer {
+    --ring-inset: 0.65rem;
+  }
+
+  .orbit-ring.middle {
+    --ring-inset: 3rem;
+  }
+
+  .orbit-ring.inner {
+    --ring-inset: 5.2rem;
+  }
+
+  .orbit-core {
+    gap: 0.1rem;
+    width: 39%;
+    padding: 0.7rem;
+  }
+
+  .orbit-core strong {
+    font-size: clamp(3.2rem, 17vw, 4.4rem);
+  }
+
+  .orbit-core span,
+  .orbit-core small,
+  .orbit-node small {
+    font-size: 0.54rem;
+    line-height: 1.15;
+    letter-spacing: 0.12em;
+  }
+
+  .orbit-node {
+    width: clamp(4rem, 21vw, 4.9rem);
+  }
+
+  .orbit-node strong {
+    font-size: 1.42rem;
+  }
+
+  .diagnostic-readout {
+    padding-top: 1.35rem;
+  }
+
+  .diagnostic-readout .panel-row {
+    display: grid;
+    grid-template-columns: minmax(6rem, 0.68fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .diagnostic-readout .panel-row strong {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .diagnostic-bars {
+    gap: 1rem;
+    margin: 1.6rem 0;
+  }
+
+  .diagnostic-bars p {
+    grid-template-columns: minmax(0, 1fr) minmax(2.75rem, auto);
+    gap: 0.65rem 0.9rem;
+    padding-right: 0.15rem;
+    font-size: 0.84rem;
+  }
+
+  .diagnostic-bars strong {
+    font-size: 1.55rem;
   }
 
   .contact-panel-heading {
