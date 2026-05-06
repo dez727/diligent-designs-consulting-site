@@ -1,48 +1,205 @@
 import Link from "next/link";
-import { StepIndicator } from "@/components/assessment/StepIndicator";
+
+const services = [
+  {
+    title: "Automation strategy",
+    copy: "Map recurring work, score what matters, and build the first automation where it will actually remove friction."
+  },
+  {
+    title: "Marketing analytics",
+    copy: "Turn campaigns, leads, channels, and follow-up activity into reporting that supports better decisions."
+  },
+  {
+    title: "AI implementation",
+    copy: "Use AI where it fits the workflow: intake, routing, drafts, summaries, internal tools, and decision support."
+  }
+];
+
+const signals = [
+  "Manual handoffs slow down response time",
+  "Reporting exists, but decisions still feel unclear",
+  "Leads fall through gaps between tools",
+  "AI experiments are scattered instead of operational"
+];
+
+const process = [
+  ["01", "Audit", "Identify the workflows, data gaps, and marketing decisions creating drag."],
+  ["02", "Prioritize", "Score opportunities by impact, effort, risk, and process clarity."],
+  ["03", "Build", "Implement focused automations, reporting surfaces, and practical AI support."],
+  ["04", "Refine", "Measure what changed, tighten the system, and choose the next improvement."]
+];
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 py-16">
-      <section className="card relative w-full overflow-hidden p-10 md:p-14">
-        <div className="pointer-events-none absolute -right-20 -top-16 h-56 w-56 rounded-full bg-coral/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-sage/25 blur-3xl" />
+    <main>
+      <section className="hero-shell">
+        <nav className="site-nav" aria-label="Main navigation">
+          <Link className="brand-mark" href="/">
+            <span className="brand-monogram">DD</span>
+            <span>
+              <strong>Diligent Designs</strong>
+              <small>Consulting</small>
+            </span>
+          </Link>
+          <div className="nav-actions">
+            <Link href="/scanner">Scanner</Link>
+            <a href="mailto:hello@diligentdesignsconsulting.com">Contact</a>
+          </div>
+        </nav>
 
-        <p className="inline-flex rounded-full border border-slateBlue/20 bg-slateBlue/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slateBlue">
-          MVP Scanner
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-5xl">
-          Client Automation Opportunity Scanner
-        </h1>
-        <p className="mt-4 max-w-2xl text-base text-[var(--ink-soft)] md:text-lg">
-          A fast assessment for small businesses to identify the top workflows worth automating first, based on impact,
-          effort, and execution practicality.
-        </p>
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <h1>Cleaner systems for teams ready to automate the right work.</h1>
+            <p>
+              AI, automation, and digital marketing strategy for small and medium-size businesses that need clearer
+              reporting, faster follow-up, and practical systems they can trust.
+            </p>
 
-        <div className="mt-8 max-w-4xl">
-          <StepIndicator currentStep={1} />
+            <div className="hero-actions">
+              <Link className="button-primary" href="/scanner">
+                Run the Scanner
+              </Link>
+              <a className="button-secondary dark" href="mailto:hello@diligentdesignsconsulting.com">
+                Start a Conversation
+              </a>
+            </div>
+          </div>
+
+          <div className="system-map" aria-label="Automation and analytics system preview">
+            <div className="map-header">
+              <span>Workflow signal</span>
+              <strong>Automation readiness</strong>
+            </div>
+            <div className="map-rail">
+              <span className="map-dot active" />
+              <span className="map-line" />
+              <span className="map-dot" />
+              <span className="map-line" />
+              <span className="map-dot" />
+            </div>
+            <div className="map-stack">
+              <div>
+                <span>Lead response</span>
+                <strong>High impact</strong>
+              </div>
+              <div>
+                <span>Campaign reporting</span>
+                <strong>Decision gap</strong>
+              </div>
+              <div>
+                <span>Client intake</span>
+                <strong>Repeatable</strong>
+              </div>
+            </div>
+            <div className="map-score">
+              <span>Priority score</span>
+              <strong>87</strong>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-8 grid gap-4 text-sm text-[var(--ink-soft)] md:grid-cols-3">
-          <div className="rounded-2xl border border-[var(--line)] bg-white/70 p-4">
-            <p className="font-semibold text-[var(--ink)]">Clear language</p>
-            <p className="mt-2">Answer with business-friendly labels instead of ambiguous 1-5 numbers.</p>
+      <section className="section-band intro-band">
+        <div className="section-grid">
+          <div>
+            <p className="eyebrow">Practical AI Adoption</p>
+            <h2>Build around the business you already run.</h2>
           </div>
-          <div className="rounded-2xl border border-[var(--line)] bg-white/70 p-4">
-            <p className="font-semibold text-[var(--ink)]">Fast scoring</p>
-            <p className="mt-2">Visible segmented controls make each response a one-click choice.</p>
+          <p>
+            The goal is not more software for its own sake. It is better handoffs, cleaner data, stronger follow-up, and
+            marketing decisions that are easier to act on.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-wrap">
+        <div className="problem-layout">
+          <div>
+            <p className="eyebrow">Where We Help</p>
+            <h2>When work is moving, but the system is not keeping up.</h2>
           </div>
-          <div className="rounded-2xl border border-[var(--line)] bg-white/70 p-4">
-            <p className="font-semibold text-[var(--ink)]">Practical results</p>
-            <p className="mt-2">Process complexity helps estimate automation feasibility without technical jargon.</p>
+          <div className="signal-list">
+            {signals.map((signal) => (
+              <p key={signal}>{signal}</p>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link className="button-primary" href="/assessment">
-            Start Assessment
+      <section className="section-wrap services-section">
+        <div className="section-heading">
+          <p className="eyebrow">Consulting Focus</p>
+          <h2>Strategy, automation, and analytics in one operating lane.</h2>
+        </div>
+        <div className="service-grid">
+          {services.map((service) => (
+            <article className="service-card" key={service.title}>
+              <h3>{service.title}</h3>
+              <p>{service.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-band process-band">
+        <div className="section-heading">
+          <p className="eyebrow">Method</p>
+          <h2>Find the first useful improvement, then build from there.</h2>
+        </div>
+        <div className="process-grid">
+          {process.map(([step, title, copy]) => (
+            <article key={step}>
+              <span>{step}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-wrap scanner-feature">
+        <div className="scanner-copy">
+          <p className="eyebrow">Featured Tool</p>
+          <h2>Start with the Automation Opportunity Scanner.</h2>
+          <p>
+            Score recurring work by business impact, manual effort, risk, and process clarity. The output gives you a
+            ranked shortlist of automation candidates and a clearer first move.
+          </p>
+          <Link className="button-primary" href="/scanner">
+            Open the Scanner
           </Link>
         </div>
+        <div className="scanner-panel">
+          <div className="panel-row top">
+            <span>Top candidate</span>
+            <strong>Customer follow-up routing</strong>
+          </div>
+          <div className="score-bars">
+            <span style={{ width: "91%" }} />
+            <span style={{ width: "78%" }} />
+            <span style={{ width: "64%" }} />
+          </div>
+          <div className="panel-grid">
+            <p>
+              <strong>Impact</strong>
+              Revenue and response time
+            </p>
+            <p>
+              <strong>Build path</strong>
+              CRM, email, AI summary
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="final-cta">
+        <div>
+          <h2>Ready to clean up the next system?</h2>
+          <p>Bring the workflow, the reporting problem, or the marketing question. We will find the first practical move.</p>
+        </div>
+        <a className="button-secondary dark" href="mailto:hello@diligentdesignsconsulting.com">
+          Start a Conversation
+        </a>
       </section>
     </main>
   );

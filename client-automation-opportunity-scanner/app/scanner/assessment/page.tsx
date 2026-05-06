@@ -24,25 +24,25 @@ export default function AssessmentPage() {
 
   const handleSubmit = () => {
     startTransition(() => {
-      router.push("/results");
+      router.push("/scanner/results");
     });
   };
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-10 md:py-14">
+    <main className="mx-auto w-full max-w-7xl px-5 py-8 md:px-8 md:py-12">
       <div className="space-y-6">
-        <div className="rise-in rounded-[2rem] border border-[var(--line)] bg-[linear-gradient(135deg,rgba(47,59,109,0.98),rgba(65,87,134,0.94))] p-8 text-white shadow-soft md:p-10">
+        <div className="rise-in rounded-lg border border-[var(--line)] bg-[var(--brand-deep)] p-8 text-white shadow-[var(--shadow)] md:p-10">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/70">Assessment Wizard</p>
-              <h1 className="mt-3 text-3xl md:text-5xl">A clearer path to your best automation opportunities.</h1>
+              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[var(--gold)]">Assessment Wizard</p>
+              <h1 className="mt-3 text-4xl leading-tight md:text-6xl">Turn operational friction into a ranked action list.</h1>
               <p className="mt-4 max-w-2xl text-sm text-white/78 md:text-base">
-                We&apos;ll move from business context to workflow scoring, then rank the top three opportunities based on impact
-                and process complexity.
+                Move from business context to workflow scoring, then rank the top three opportunities by impact, effort,
+                risk, and process clarity.
               </p>
             </div>
-            <Link href="/" className="button-secondary bg-white/10 text-white hover:bg-white/20">
-              Back Home
+            <Link href="/scanner" className="button-secondary border-white/15 bg-white/10 text-white hover:bg-white/20">
+              Back to Scanner
             </Link>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function AssessmentPage() {
             <BusinessDetailsForm business={data.business} onUpdate={updateBusiness} />
 
             <aside className="card p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slateBlue">Step 2 of 4</p>
+              <p className="eyebrow">Step 2 of 4</p>
               <h2 className="mt-2 text-2xl">Business Context</h2>
               <p className="mt-3 text-sm text-[var(--ink-soft)]">
                 This step gives the scanner just enough context to make the recommendations sound grounded rather than generic.
@@ -68,7 +68,7 @@ export default function AssessmentPage() {
                   Continue to Workflow Scoring
                 </button>
                 {!businessStepReady ? (
-                  <p className="basis-full text-xs text-coral">Add at least a business name and industry to continue.</p>
+                  <p className="basis-full text-xs text-[var(--copper)]">Add at least a business name and industry to continue.</p>
                 ) : null}
               </div>
             </aside>
@@ -78,7 +78,7 @@ export default function AssessmentPage() {
             <div className="card p-6">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slateBlue">Step 3 of 4</p>
+                  <p className="eyebrow">Step 3 of 4</p>
                   <h2 className="mt-2 text-2xl">Workflow Scoring</h2>
                   <p className="mt-2 max-w-3xl text-sm text-[var(--ink-soft)]">
                     Use the visible option groups below to score each workflow. We convert your answers into an impact score and
@@ -110,7 +110,7 @@ export default function AssessmentPage() {
                 <button type="button" className="button-primary" onClick={handleSubmit} disabled={!workflowsReady}>
                   Generate Results
                 </button>
-                {!workflowsReady ? <p className="text-xs text-coral">Give each workflow a name before continuing.</p> : null}
+                {!workflowsReady ? <p className="text-xs text-[var(--copper)]">Give each workflow a name before continuing.</p> : null}
               </div>
             </div>
           </section>

@@ -22,7 +22,7 @@ export function WorkflowPainPointCard({
   return (
     <article className="card p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="flex-1 min-w-[240px]">
+        <div className="min-w-[240px] flex-1">
           <label>
             <span className="label">Workflow Pain Point</span>
             <input
@@ -40,7 +40,7 @@ export function WorkflowPainPointCard({
         ) : null}
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-2">
+      <div className="mt-6 grid gap-5 xl:grid-cols-2">
         {workflowQuestionList.map((question) => (
           <SegmentedControl
             key={question.field}

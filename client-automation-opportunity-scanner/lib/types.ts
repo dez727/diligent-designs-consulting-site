@@ -44,6 +44,8 @@ export type OpportunityRecommendation = {
   rationale: string;
   approach: string;
   tools: string[];
+  buildMode: string;
+  buildOptions: string[];
 };
 
 export type ScoredOpportunity = WorkflowPainPoint & OpportunityScore & OpportunityRecommendation;

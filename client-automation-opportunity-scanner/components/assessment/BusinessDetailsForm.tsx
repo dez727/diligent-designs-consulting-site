@@ -12,7 +12,7 @@ export function BusinessDetailsForm({ business, onUpdate }: BusinessDetailsFormP
     <section className="card p-6">
       <h2 className="text-2xl">Business Snapshot</h2>
       <p className="mt-1 text-sm text-[var(--ink-soft)]">
-        A little context helps tailor the automation recommendations to the tools and team you already have.
+        A little context helps tailor recommendations to the tools, team, and operating reality you already have.
       </p>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -22,7 +22,7 @@ export function BusinessDetailsForm({ business, onUpdate }: BusinessDetailsFormP
             className="input"
             value={business.businessName}
             onChange={(event) => onUpdate("businessName", event.target.value)}
-            placeholder="Evergreen Dental Studio"
+            placeholder="Diligent Client Co."
           />
         </label>
 
@@ -32,7 +32,7 @@ export function BusinessDetailsForm({ business, onUpdate }: BusinessDetailsFormP
             className="input"
             value={business.industry}
             onChange={(event) => onUpdate("industry", event.target.value)}
-            placeholder="Professional Services"
+            placeholder="Professional services"
           />
         </label>
 
@@ -52,7 +52,7 @@ export function BusinessDetailsForm({ business, onUpdate }: BusinessDetailsFormP
             className="input min-h-28 resize-y"
             value={business.currentTools}
             onChange={(event) => onUpdate("currentTools", event.target.value)}
-            placeholder="Google Workspace, QuickBooks, Calendly"
+            placeholder="Google Workspace, HubSpot, QuickBooks, Calendly, ChatGPT, Gemini, Claude"
           />
         </label>
       </div>

@@ -1,28 +1,18 @@
 import type { Metadata } from "next";
-import { Sora, DM_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { AssessmentProvider } from "@/app/providers";
 
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-display"
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body"
-});
-
 export const metadata: Metadata = {
-  title: "Client Automation Opportunity Scanner",
-  description: "Simple assessment to discover high-priority automation opportunities for small businesses."
+  title: "Diligent Designs Consulting | AI, Automation, and Marketing Analytics",
+  description:
+    "AI, automation, and digital marketing strategy for small and medium-size businesses ready to clean up operations, reporting, and follow-up."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable} ${dmSans.variable}`}>
+      <body>
         <AssessmentProvider>{children}</AssessmentProvider>
       </body>
     </html>

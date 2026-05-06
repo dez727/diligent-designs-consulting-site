@@ -30,10 +30,10 @@ export function SegmentedControl<TValue extends string>({
               key={option.value}
               type="button"
               onClick={() => onChange(option.value)}
-              className={`rounded-2xl border px-4 py-3 text-left transition ${
+              className={`rounded-lg border px-4 py-3 text-left transition ${
                 isSelected
-                  ? "border-slateBlue bg-slateBlue text-white shadow-soft"
-                  : "border-[var(--line)] bg-white hover:border-slateBlue/30 hover:bg-[var(--surface-alt)]"
+                  ? "border-[var(--brand-deep)] bg-[var(--brand-deep)] text-white"
+                  : "border-[var(--line)] bg-white hover:border-[var(--copper)]/40 hover:bg-[#fffaf0]"
               }`}
               aria-pressed={isSelected}
             >
