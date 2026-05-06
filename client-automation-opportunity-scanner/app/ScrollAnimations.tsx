@@ -22,6 +22,14 @@ export function ScrollAnimations() {
       const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
       root.style.setProperty("--scroll-progress", String(Math.min(Math.max(progress, 0), 1)));
       root.style.setProperty("--scroll-y", String(Math.round(window.scrollY)));
+
+      document.querySelectorAll<HTMLElement>("[data-process-band]").forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const track = rect.height - window.innerHeight;
+        const raw = track > 0 ? (window.innerHeight - rect.top) / (rect.height + window.innerHeight * 0.15) : 0;
+        const sectionProgress = Math.min(Math.max(raw, 0), 1);
+        section.style.setProperty("--process-progress", String(sectionProgress));
+      });
     };
 
     let ticking = false;

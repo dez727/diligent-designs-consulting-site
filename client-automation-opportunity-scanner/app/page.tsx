@@ -24,10 +24,17 @@ const signals = [
 ];
 
 const process = [
-  ["01", "Audit", "Identify the workflows, data gaps, and marketing decisions creating drag."],
-  ["02", "Prioritize", "Score opportunities by impact, effort, risk, and process clarity."],
-  ["03", "Build", "Implement focused automations, reporting surfaces, and practical AI support."],
-  ["04", "Refine", "Measure what changed, tighten the system, and choose the next improvement."]
+  ["01", "Diagnose", "Map the workflow as it actually runs: inputs, handoffs, data quality, and decisions."],
+  ["02", "Prioritize", "Score opportunities by impact, manual effort, risk, clarity, and owner readiness."],
+  ["03", "Automate", "Build the focused automation, dashboard, or AI support layer that removes real drag."],
+  ["04", "Measure", "Track what changed, tighten the system, and choose the next improvement with evidence."]
+];
+
+const diagnosticFactors = [
+  ["Impact", "91", "Revenue, response time, and customer experience"],
+  ["Manual effort", "78", "Repeatable work that still depends on people moving data"],
+  ["Risk", "64", "Failure points, exceptions, and handoff sensitivity"],
+  ["Clarity", "86", "How cleanly the work can be described, owned, and measured"]
 ];
 
 export default function HomePage() {
@@ -145,11 +152,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-band process-band">
+      <section className="section-band process-band" data-process-band>
+        <span className="section-side-label" aria-hidden="true">
+          Operating method
+        </span>
         <div className="process-inner">
           <div className="section-heading process-heading" data-animate="fade-up">
             <p className="eyebrow">Method</p>
             <h2>Find the first useful improvement, then build from there.</h2>
+            <p>
+              A slow, practical sequence for turning scattered work into a system your team can trust.
+            </p>
             <div className="process-progress" aria-hidden="true">
               <span />
             </div>
@@ -178,25 +191,47 @@ export default function HomePage() {
             Open the Scanner
           </Link>
         </div>
-        <div className="scanner-panel delay-1" data-animate="scanner-panel">
-          <div className="panel-row top">
-            <span>Top candidate</span>
-            <strong>Customer follow-up routing</strong>
+        <div className="diagnostic-panel delay-1" data-animate="diagnostic-panel">
+          <div className="diagnostic-orbit" aria-label="Automation opportunity diagnostic scorecard">
+            <span className="orbit-ring outer" />
+            <span className="orbit-ring middle" />
+            <span className="orbit-ring inner" />
+            {diagnosticFactors.map(([label, value], index) => (
+              <span className={`orbit-node node-${index + 1}`} key={label}>
+                <strong>{value}</strong>
+                <small>{label}</small>
+              </span>
+            ))}
+            <div className="orbit-core">
+              <span>Scanner</span>
+              <strong>87</strong>
+              <small>Priority score</small>
+            </div>
           </div>
-          <div className="score-bars">
-            <span style={{ width: "91%" }} />
-            <span style={{ width: "78%" }} />
-            <span style={{ width: "64%" }} />
-          </div>
-          <div className="panel-grid">
-            <p>
-              <strong>Impact</strong>
-              Revenue and response time
-            </p>
-            <p>
-              <strong>Build path</strong>
-              CRM, email, AI summary
-            </p>
+          <div className="diagnostic-readout">
+            <div className="panel-row top">
+              <span>Top candidate</span>
+              <strong>Customer follow-up routing</strong>
+            </div>
+            <div className="diagnostic-bars">
+              {diagnosticFactors.map(([label, value]) => (
+                <p key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                  <i style={{ width: `${value}%` }} />
+                </p>
+              ))}
+            </div>
+            <div className="panel-grid">
+              <p>
+                <strong>Impact</strong>
+                Revenue and response time
+              </p>
+              <p>
+                <strong>Build path</strong>
+                CRM, email, AI summary
+              </p>
+            </div>
           </div>
         </div>
       </section>
