@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactForm } from "@/app/ContactForm";
 import { ScrollAnimations } from "@/app/ScrollAnimations";
 
 const services = [
@@ -69,7 +70,7 @@ export default function HomePage() {
           </Link>
           <div className="nav-actions">
             <Link href="/scanner">Scanner</Link>
-            <a href="mailto:hello@diligentdesignsconsulting.com">Contact</a>
+            <a href="#contact">Contact</a>
           </div>
         </nav>
 
@@ -90,7 +91,7 @@ export default function HomePage() {
               <Link className="button-primary" href="/scanner">
                 Run the Scanner
               </Link>
-              <a className="button-secondary dark" href="mailto:hello@diligentdesignsconsulting.com">
+              <a className="button-secondary dark button-conversation" href="#contact">
                 Start a Conversation
               </a>
             </div>
@@ -277,14 +278,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="final-cta" data-animate="cta">
-        <div data-animate="fade-up">
-          <h2>Ready to clean up the next system?</h2>
-          <p>Bring the workflow, the reporting problem, or the marketing question. We will find the first practical move.</p>
+      <section className="contact-section final-cta" data-animate="cta" id="contact">
+        <div className="contact-copy" data-animate="fade-up">
+          <p className="eyebrow">Start A Conversation</p>
+          <h2>Bring the workflow that keeps showing up.</h2>
+          <p>
+            Tell me what is slowing the business down. I will help identify the first system worth cleaning up, whether
+            that is automation, analytics, follow-up, or practical AI adoption.
+          </p>
+          <div className="contact-proof" aria-label="What to expect">
+            <span>Practical first look</span>
+            <span>No hard pitch</span>
+            <span>Built for lead-gen workflows</span>
+          </div>
         </div>
-        <a className="button-secondary dark delay-1" href="mailto:hello@diligentdesignsconsulting.com" data-animate="fade-up">
-          Start a Conversation
-        </a>
+        <div className="contact-panel delay-1" data-animate="fade-up">
+          <div className="contact-panel-heading">
+            <span>Lead signal</span>
+            <strong>Tell me where the drag is</strong>
+          </div>
+          <ContactForm />
+        </div>
       </section>
     </main>
   );
