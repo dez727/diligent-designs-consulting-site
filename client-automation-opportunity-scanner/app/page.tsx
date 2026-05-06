@@ -49,7 +49,7 @@ const diagnosticFactors = [
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main-content">
       <ScrollAnimations />
       <section className="hero-shell">
         <div className="hero-cinema" aria-hidden="true">
@@ -60,20 +60,6 @@ export default function HomePage() {
           <span className="cinema-rail rail-a" />
           <span className="cinema-rail rail-b" />
         </div>
-        <nav className="site-nav" aria-label="Main navigation" data-animate="fade-down">
-          <Link className="brand-mark" href="/">
-            <span className="brand-monogram">DD</span>
-            <span>
-              <strong>Diligent Designs</strong>
-              <small>Consulting</small>
-            </span>
-          </Link>
-          <div className="nav-actions">
-            <Link href="/scanner">Scanner</Link>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
-
         <div className="hero-grid">
           <div className="hero-copy">
             <h1 className="hero-title" data-animate="headline">
@@ -160,7 +146,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-wrap services-section">
+      <section className="section-wrap services-section" id="services">
         <div className="section-heading" data-animate="fade-up">
           <p className="eyebrow">Consulting Focus</p>
           <h2>Strategy, automation, and analytics in one operating lane.</h2>
@@ -281,15 +267,15 @@ export default function HomePage() {
       <section className="contact-section final-cta" data-animate="cta" id="contact">
         <div className="contact-copy" data-animate="fade-up">
           <p className="eyebrow">Start A Conversation</p>
-          <h2>Bring the workflow that keeps showing up.</h2>
+          <h2>Show me where the work is getting stuck.</h2>
           <p>
-            Tell me what is slowing the business down. I will help identify the first system worth cleaning up, whether
-            that is automation, analytics, follow-up, or practical AI adoption.
+            I will help identify the first system worth cleaning up, whether that is follow-up, reporting, automation,
+            or practical AI adoption.
           </p>
           <div className="contact-proof" aria-label="What to expect">
-            <span>Practical first look</span>
-            <span>No hard pitch</span>
-            <span>Built for lead-gen workflows</span>
+            <span>Clear first read</span>
+            <span>No pressure pitch</span>
+            <span>Practical next step</span>
           </div>
         </div>
         <div className="contact-panel delay-1" data-animate="fade-up">

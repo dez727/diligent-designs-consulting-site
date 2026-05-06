@@ -3,7 +3,7 @@ import { StepIndicator } from "@/components/assessment/StepIndicator";
 
 export function ScannerHome() {
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl px-5 py-5 md:px-8">
+    <main id="main-content" className="page-with-site-nav mx-auto min-h-screen w-full max-w-7xl px-5 pb-5 md:px-8">
       <section className="grid min-h-[calc(100vh-2.5rem)] overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--panel)] shadow-[var(--shadow)] lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col justify-between p-7 md:p-12">
           <div className="flex items-center justify-between gap-4">

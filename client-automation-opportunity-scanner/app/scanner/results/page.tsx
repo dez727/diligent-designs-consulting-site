@@ -11,7 +11,7 @@ export default function ResultsPage() {
   const topOpportunities = getTopOpportunities(data, 3);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-8 md:px-8 md:py-12">
+    <main id="main-content" className="page-with-site-nav mx-auto w-full max-w-7xl px-5 pb-8 md:px-8 md:pb-12">
       <div className="space-y-6">
         <div className="rise-in rounded-lg border border-[var(--line)] bg-[var(--panel)] p-8 shadow-[var(--shadow)] md:p-10">
           <div className="flex flex-wrap items-center justify-between gap-4">

@@ -1,8 +1,28 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
-type FormStatus = "idle" | "submitting" | "success" | "fallback" | "error";
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+type TurnstileApi = {
+  render: (
+    element: HTMLElement,
+    options: {
+      sitekey: string;
+      callback: (token: string) => void;
+      "expired-callback": () => void;
+      "error-callback": () => void;
+      theme?: "light" | "dark" | "auto";
+    }
+  ) => string;
+  reset: (widgetId?: string) => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
 
 const focusOptions = [
   "Automation strategy",
@@ -12,36 +32,51 @@ const focusOptions = [
   "Not sure yet"
 ];
 
-function buildMailto(form: HTMLFormElement) {
-  const data = new FormData(form);
-  const subject = encodeURIComponent("Diligent Designs conversation request");
-  const body = encodeURIComponent(
-    [
-      `Name: ${data.get("name") ?? ""}`,
-      `Email: ${data.get("email") ?? ""}`,
-      `Company: ${data.get("company") ?? ""}`,
-      `Website: ${data.get("website") ?? ""}`,
-      `Focus: ${data.get("focus") ?? ""}`,
-      "",
-      "What they want to improve:",
-      `${data.get("message") ?? ""}`
-    ].join("\n")
-  );
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-  return `mailto:hello@diligentdesignsconsulting.com?subject=${subject}&body=${body}`;
+function clean(value: FormDataEntryValue | null) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function collectAttribution() {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const storedAttribution = window.sessionStorage.getItem("ddc_attribution");
+  let previous: Record<string, string> = {};
+
+  try {
+    previous = storedAttribution ? (JSON.parse(storedAttribution) as Record<string, string>) : {};
+  } catch {
+    previous = {};
+  }
+
+  const attribution = {
+    sourcePage: window.location.href,
+    referrer: document.referrer || previous.referrer || "",
+    utmSource: params.get("utm_source") || previous.utmSource || "",
+    utmMedium: params.get("utm_medium") || previous.utmMedium || "",
+    utmCampaign: params.get("utm_campaign") || previous.utmCampaign || "",
+    utmTerm: params.get("utm_term") || previous.utmTerm || "",
+    utmContent: params.get("utm_content") || previous.utmContent || ""
+  };
+
+  window.sessionStorage.setItem("ddc_attribution", JSON.stringify(attribution));
+  return attribution;
 }
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileElementRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | undefined>(undefined);
 
   const statusMessage = useMemo(() => {
     if (status === "success") {
-      return "Got it. I will review the workflow and follow up with a practical next step.";
-    }
-
-    if (status === "fallback") {
-      return "The lead workflow is not connected yet, so your email app opened as a fallback.";
+      return "Got it. I will review what is getting stuck and follow up with a practical next step.";
     }
 
     if (status === "error") {
@@ -50,6 +85,55 @@ export function ContactForm() {
 
     return "";
   }, [error, status]);
+
+  useEffect(() => {
+    collectAttribution();
+  }, []);
+
+  useEffect(() => {
+    if (!turnstileSiteKey || !turnstileElementRef.current || turnstileWidgetIdRef.current) {
+      return;
+    }
+
+    const renderWidget = () => {
+      if (!window.turnstile || !turnstileElementRef.current || turnstileWidgetIdRef.current) {
+        return;
+      }
+
+      turnstileWidgetIdRef.current = window.turnstile.render(turnstileElementRef.current, {
+        sitekey: turnstileSiteKey,
+        theme: "dark",
+        callback: setTurnstileToken,
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken("")
+      });
+    };
+
+    if (window.turnstile) {
+      renderWidget();
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>('script[src^="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
+    const script = existingScript ?? document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", renderWidget);
+
+    if (!existingScript) {
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      script.removeEventListener("load", renderWidget);
+    };
+  }, []);
+
+  function resetTurnstile() {
+    setTurnstileToken("");
+    window.turnstile?.reset(turnstileWidgetIdRef.current);
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -64,10 +148,38 @@ export function ContactForm() {
     setStatus("submitting");
     setError("");
 
-    const payload = Object.fromEntries(data.entries());
+    const fullName = clean(data.get("name"));
+    const email = clean(data.get("email"));
+    const message = clean(data.get("message"));
+    const focusArea = clean(data.get("focus"));
+
+    if (!fullName || !email || !focusArea || message.length < 10) {
+      setError("Please include your name, email, focus area, and a short note about what is getting stuck.");
+      setStatus("error");
+      return;
+    }
+
+    if (turnstileSiteKey && !turnstileToken) {
+      setError("Please complete the bot check before submitting.");
+      setStatus("error");
+      return;
+    }
+
+    const payload = {
+      fullName,
+      email,
+      phone: clean(data.get("phone")),
+      companyName: clean(data.get("company")),
+      websiteUrl: clean(data.get("website")),
+      focusArea,
+      message,
+      consentToContact: data.get("consent") === "on",
+      turnstileToken,
+      ...collectAttribution()
+    };
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -77,13 +189,8 @@ export function ContactForm() {
 
       if (response.ok) {
         form.reset();
+        resetTurnstile();
         setStatus("success");
-        return;
-      }
-
-      if (response.status === 404 || response.status === 503) {
-        window.location.href = buildMailto(form);
-        setStatus("fallback");
         return;
       }
 
@@ -92,6 +199,7 @@ export function ContactForm() {
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "The form could not be submitted.");
       setStatus("error");
+      resetTurnstile();
     }
   }
 
@@ -116,24 +224,30 @@ export function ContactForm() {
           <input name="company" type="text" />
         </label>
         <label>
-          <span>Website</span>
-          <input name="website" placeholder="https://" type="url" />
+          <span>Phone</span>
+          <input autoComplete="tel" name="phone" type="tel" />
         </label>
       </div>
 
-      <label>
-        <span>What are you trying to improve?</span>
-        <select defaultValue="" name="focus" required>
-          <option disabled value="">
-            Choose a focus
-          </option>
-          {focusOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
+      <div className="form-row">
+        <label>
+          <span>Website</span>
+          <input name="website" placeholder="https://" type="url" />
+        </label>
+        <label>
+          <span>Preferred starting point</span>
+          <select defaultValue="" name="focus" required>
+            <option disabled value="">
+              Choose a focus
             </option>
-          ))}
-        </select>
-      </label>
+            {focusOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
       <label>
         <span>What is slowing the business down?</span>
@@ -145,12 +259,19 @@ export function ContactForm() {
         />
       </label>
 
+      <label className="contact-consent">
+        <input name="consent" required type="checkbox" />
+        <span>I agree to be contacted about this request.</span>
+      </label>
+
+      {turnstileSiteKey ? <div ref={turnstileElementRef} className="turnstile-widget" /> : null}
+
       <button className="button-primary contact-submit" disabled={status === "submitting"} type="submit">
         {status === "submitting" ? "Sending..." : "Start the Conversation"}
       </button>
 
       <p className={`contact-status ${status === "error" ? "is-error" : ""}`} role="status">
-        {statusMessage || "No hard pitch. Just a practical first look at where automation may help."}
+        {statusMessage || "No pressure pitch. Just a clear first read on what to clean up next."}
       </p>
     </form>
   );

@@ -1,7 +1,10 @@
 node_modules
 .next
+.wrangler
+.tmp-screens
 out
 coverage
+tsconfig.tsbuildinfo
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -9,3 +12,4 @@ pnpm-debug.log*
 
 # Keep local secrets out of git.
 .env*
+!.env.example
