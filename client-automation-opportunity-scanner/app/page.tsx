@@ -3,16 +3,25 @@ import { ScrollAnimations } from "@/app/ScrollAnimations";
 
 const services = [
   {
+    index: "01",
     title: "Automation strategy",
-    copy: "Map recurring work, score what matters, and build the first automation where it will actually remove friction."
+    copy: "Map recurring work, score what matters, and build the first automation where it will actually remove friction.",
+    signal: "First workflow worth fixing",
+    tags: ["Process map", "Priority score", "Build path"]
   },
   {
+    index: "02",
     title: "Marketing analytics",
-    copy: "Turn campaigns, leads, channels, and follow-up activity into reporting that supports better decisions."
+    copy: "Turn campaigns, leads, channels, and follow-up activity into reporting that supports better decisions.",
+    signal: "Cleaner decision surface",
+    tags: ["Attribution", "Dashboard", "Next action"]
   },
   {
+    index: "03",
     title: "AI implementation",
-    copy: "Use AI where it fits the workflow: intake, routing, drafts, summaries, internal tools, and decision support."
+    copy: "Use AI where it fits the workflow: intake, routing, drafts, summaries, internal tools, and decision support.",
+    signal: "Practical AI in motion",
+    tags: ["Summaries", "Routing", "Internal tools"]
   }
 ];
 
@@ -42,6 +51,14 @@ export default function HomePage() {
     <main>
       <ScrollAnimations />
       <section className="hero-shell">
+        <div className="hero-cinema" aria-hidden="true">
+          <span className="cinema-plane plane-a" />
+          <span className="cinema-plane plane-b" />
+          <span className="cinema-node node-a" />
+          <span className="cinema-node node-b" />
+          <span className="cinema-rail rail-a" />
+          <span className="cinema-rail rail-b" />
+        </div>
         <nav className="site-nav" aria-label="Main navigation" data-animate="fade-down">
           <Link className="brand-mark" href="/">
             <span className="brand-monogram">DD</span>
@@ -58,7 +75,12 @@ export default function HomePage() {
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <h1 data-animate="headline">Cleaner systems for teams ready to automate the right work.</h1>
+            <h1 className="hero-title" data-animate="headline">
+              <span>Cleaner systems</span>
+              <span>for teams ready</span>
+              <span>to automate the</span>
+              <span>right work.</span>
+            </h1>
             <p data-animate="fade-up" className="delay-1">
               AI, automation, and digital marketing strategy for small and medium-size businesses that need clearer
               reporting, faster follow-up, and practical systems they can trust.
@@ -142,11 +164,30 @@ export default function HomePage() {
           <p className="eyebrow">Consulting Focus</p>
           <h2>Strategy, automation, and analytics in one operating lane.</h2>
         </div>
-        <div className="service-grid">
+        <div className="service-showcase">
           {services.map((service, index) => (
-            <article className={`service-card delay-${index + 1}`} data-animate="card" key={service.title}>
-              <h3>{service.title}</h3>
-              <p>{service.copy}</p>
+            <article
+              className={`service-card service-panel delay-${index + 1}`}
+              data-animate="service-panel"
+              data-service-panel
+              key={service.title}
+            >
+              <div className="service-copy">
+                <span>{service.index}</span>
+                <h3>{service.title}</h3>
+                <p>{service.copy}</p>
+                <div className="service-tags" aria-label={`${service.title} focus areas`}>
+                  {service.tags.map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+              </div>
+              <div className="service-visual" aria-hidden="true">
+                <strong>{service.signal}</strong>
+                <i />
+                <i />
+                <i />
+              </div>
             </article>
           ))}
         </div>
@@ -179,7 +220,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-wrap scanner-feature" data-animate="fade-up">
+      <section className="section-wrap scanner-feature" data-animate="fade-up" id="scanner">
         <div className="scanner-copy">
           <p className="eyebrow">Featured Tool</p>
           <h2>Start with the Automation Opportunity Scanner.</h2>
