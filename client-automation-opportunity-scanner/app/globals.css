@@ -24,6 +24,8 @@
   --shadow: 0 28px 70px -42px rgba(9, 10, 12, 0.62);
   --scroll-progress: 0;
   --site-content-width: 76rem;
+  --site-gutter: clamp(1rem, 3vw, 1.5rem);
+  --section-y: clamp(2.75rem, 4.5vw, 4.25rem);
 }
 
 * {
@@ -34,6 +36,10 @@ html,
 body {
   overflow-x: clip;
   scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: 7.25rem;
 }
 
 body {
@@ -628,8 +634,8 @@ h6 {
 .hero-shell {
   position: relative;
   overflow: hidden;
-  min-height: 100svh;
-  padding: 1.25rem;
+  min-height: min(86svh, 56rem);
+  padding: var(--site-gutter);
   color: #fff;
   background:
     radial-gradient(circle at 78% 16%, rgba(226, 59, 75, 0.2), transparent 30rem),
@@ -923,14 +929,14 @@ h6 {
   gap: 3rem;
   margin: 0 auto;
   max-width: var(--site-content-width);
-  padding: 8rem 0 3.75rem;
+  padding: clamp(6.75rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 4.25rem);
 }
 
 .hero-copy h1 {
   max-width: 56rem;
   color: #fff;
-  font-size: clamp(3.25rem, 5.2vw, 5.6rem);
-  line-height: 0.92;
+  font-size: clamp(3rem, 4.85vw, 5.25rem);
+  line-height: 0.96;
 }
 
 .hero-title span {
@@ -1154,7 +1160,8 @@ h6 {
 .section-band,
 .section-wrap,
 .final-cta {
-  padding: clamp(4.5rem, 7vw, 6.5rem) 1.25rem;
+  padding: var(--section-y) var(--site-gutter);
+  scroll-margin-top: 7.25rem;
 }
 
 .intro-band {
@@ -1186,10 +1193,10 @@ h6 {
 .section-heading h2,
 .scanner-copy h2,
 .final-cta h2 {
-  max-width: min(48rem, 100%);
+  max-width: min(44rem, 100%);
   color: var(--brand-deep);
-  font-size: clamp(2.45rem, 4.6vw, 4.35rem);
-  line-height: 1.03;
+  font-size: clamp(2.35rem, 3.9vw, 3.9rem);
+  line-height: 1.08;
 }
 
 .section-grid p,
@@ -1207,8 +1214,7 @@ h6 {
 .problem-section {
   display: grid;
   align-items: center;
-  min-height: clamp(34rem, 70vh, 45rem);
-  padding-bottom: clamp(4.5rem, 7vw, 6.75rem);
+  min-height: auto;
 }
 
 .signal-list {
@@ -1263,7 +1269,6 @@ h6 {
 
 .services-section {
   position: relative;
-  padding-top: clamp(4.75rem, 7vw, 6.75rem);
 }
 
 .services-section::before {
@@ -1278,7 +1283,7 @@ h6 {
 }
 
 .section-heading {
-  margin-bottom: 2.75rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 .service-grid,
@@ -2214,9 +2219,9 @@ h6 {
   max-width: none;
   margin: 0;
   padding:
-    clamp(5rem, 8vw, 7.5rem)
-    max(1.25rem, calc((100vw - var(--site-content-width)) / 2 + 1.25rem));
-  scroll-margin-top: 6rem;
+    var(--section-y)
+    max(var(--site-gutter), calc((100vw - var(--site-content-width)) / 2 + var(--site-gutter)));
+  scroll-margin-top: 7.25rem;
 }
 
 .contact-copy {
@@ -2416,9 +2421,9 @@ h6 {
   }
 
   .process-band {
-    min-height: 150vh;
-    padding-bottom: 8rem;
-    padding-top: 8rem;
+    min-height: 100vh;
+    padding-bottom: clamp(3.75rem, 5vw, 5rem);
+    padding-top: clamp(3.75rem, 5vw, 5rem);
   }
 
   .hero-grid,
@@ -2457,7 +2462,7 @@ h6 {
 
   .process-inner .process-grid {
     grid-template-columns: 1fr;
-    gap: 5rem;
+    gap: clamp(2.5rem, 4vw, 3.5rem);
   }
 
   .process-heading {
@@ -2504,30 +2509,16 @@ h6 {
   .section-heading h2,
   .scanner-copy h2,
   .final-cta h2 {
-    font-size: clamp(3rem, 7vw, 4.1rem);
-    line-height: 1.04;
+    font-size: clamp(2.55rem, 5.6vw, 3.35rem);
+    line-height: 1.08;
   }
 
   .problem-section {
     min-height: auto;
-    padding-top: 5.75rem;
-    padding-bottom: 5.75rem;
-  }
-
-  .services-section {
-    padding-top: 5.5rem;
   }
 }
 
 @media (max-width: 640px) {
-  .hero-shell,
-  .section-band,
-  .section-wrap,
-  .final-cta {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   .site-nav {
     left: 1rem;
     right: 1rem;
@@ -2609,7 +2600,8 @@ h6 {
   }
 
   .hero-copy h1 {
-    font-size: 3rem;
+    font-size: clamp(2.55rem, 12vw, 3rem);
+    line-height: 1;
   }
 
   .hero-shell::after {
@@ -2619,7 +2611,7 @@ h6 {
 
   .hero-grid {
     gap: 2rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2.5rem;
     padding-top: 7rem;
   }
 
@@ -2643,12 +2635,6 @@ h6 {
 
   .problem-section {
     min-height: auto;
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
-  }
-
-  .services-section {
-    padding-top: 4.5rem;
   }
 
   .motion-ready [data-animate="signal"] {
@@ -2685,8 +2671,6 @@ h6 {
   }
 
   .contact-section.final-cta {
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
     scroll-margin-top: 6.25rem;
   }
 
