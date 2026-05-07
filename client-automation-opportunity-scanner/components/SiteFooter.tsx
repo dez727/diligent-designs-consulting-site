@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 
 const footerNav = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Scanner", href: "/scanner" },
   { label: "Contact", href: "/#contact" }
 ];
