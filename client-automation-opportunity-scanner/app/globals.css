@@ -1544,6 +1544,11 @@ h6 {
   gap: var(--space-3);
 }
 
+.service-detail .service-copy > p {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
 .service-detail h2 {
   font-size: var(--text-h3);
   line-height: var(--leading-heading);
@@ -1565,7 +1570,7 @@ h6 {
 
 .service-detail-body > div > p {
   color: var(--ink-soft);
-  font-size: var(--text-sm);
+  font-size: var(--text-body);
   line-height: var(--leading-body);
 }
 
