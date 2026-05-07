@@ -192,12 +192,48 @@ export default function HomePage() {
 
                 {service.visual === "analytics" ? (
                   <>
-                    <div className="analytics-preview">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      <i />
+                    <div className="analytics-line-preview">
+                      <div className="analytics-line-header">
+                        <span>Lead sources</span>
+                        <strong>Decision velocity</strong>
+                      </div>
+                      <svg className="analytics-line-chart" viewBox="0 0 420 150" role="img" aria-label="">
+                        <defs>
+                          <linearGradient id="analytics-signal-gradient" x1="20" x2="400" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stopColor="#c7ccd3" />
+                            <stop offset="42%" stopColor="#e23b4b" />
+                            <stop offset="100%" stopColor="#b11226" />
+                          </linearGradient>
+                        </defs>
+                        <path className="chart-grid-line" d="M20 28H400" />
+                        <path className="chart-grid-line" d="M20 76H400" />
+                        <path className="chart-grid-line" d="M20 124H400" />
+                        <path className="chart-baseline" d="M20 124H400" />
+                        <path
+                          className="chart-shadow-line"
+                          d="M20 104 C68 82 92 96 132 72 C174 46 204 58 242 38 C288 14 326 40 400 22"
+                        />
+                        <path
+                          className="chart-signal-line"
+                          d="M20 104 C68 82 92 96 132 72 C174 46 204 58 242 38 C288 14 326 40 400 22"
+                        />
+                        <g className="chart-points">
+                          <circle cx="20" cy="104" r="5" />
+                          <circle cx="132" cy="72" r="5" />
+                          <circle cx="242" cy="38" r="5" />
+                          <circle cx="400" cy="22" r="5" />
+                        </g>
+                      </svg>
+                      <div className="analytics-line-metrics">
+                        <span>
+                          <small>Attribution</small>
+                          <strong>Clearer</strong>
+                        </span>
+                        <span>
+                          <small>Next move</small>
+                          <strong>Faster</strong>
+                        </span>
+                      </div>
                     </div>
                     <div className="decision-strip">
                       <span>Source clarity</span>

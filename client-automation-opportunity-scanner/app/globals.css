@@ -1455,55 +1455,131 @@ h6 {
   line-height: 1.1;
 }
 
-.analytics-preview {
+.analytics-line-preview {
   position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: end;
-  gap: 0.55rem;
-  min-height: 6.7rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.75rem 0.65rem 0;
+  gap: 0.65rem;
+  min-height: 8.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.45rem;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.055);
+  background-size: 24px 24px;
+  padding: 0.82rem 0.9rem 0.7rem;
 }
 
-.analytics-preview span {
-  display: block;
-  height: var(--bar-height, 50%);
-  min-height: 2rem;
-  border-radius: 0.35rem 0.35rem 0 0;
-  background: linear-gradient(180deg, rgba(226, 59, 75, 0.92), rgba(199, 204, 211, 0.42));
-  transform: scaleY(0.4);
-  transform-origin: bottom center;
-  transition: transform 0.85s cubic-bezier(0.2, 0.72, 0.18, 1);
-}
-
-.analytics-preview span:nth-child(1) {
-  --bar-height: 46%;
-}
-
-.analytics-preview span:nth-child(2) {
-  --bar-height: 70%;
-}
-
-.analytics-preview span:nth-child(3) {
-  --bar-height: 38%;
-}
-
-.analytics-preview span:nth-child(4) {
-  --bar-height: 86%;
-}
-
-.analytics-preview i {
+.analytics-line-preview::after {
   position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 8%, rgba(226, 59, 75, 0.16), transparent 64%);
+  content: "";
+  opacity: 0;
+  transform: translateX(-55%);
+  transition:
+    opacity 0.45s ease,
+    transform 1.2s cubic-bezier(0.2, 0.72, 0.18, 1);
+}
+
+.analytics-line-header,
+.analytics-line-metrics {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.analytics-line-header span,
+.analytics-line-metrics small {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.analytics-line-header strong,
+.analytics-line-metrics strong {
+  color: #fff;
+  font-size: 0.72rem;
+}
+
+.analytics-line-chart {
+  position: relative;
+  z-index: 1;
   display: block;
-  right: 0.7rem;
-  bottom: 68%;
-  left: 0.7rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--silver), var(--signal-red));
-  transform: scaleX(0.36);
-  transform-origin: left center;
-  transition: transform 0.85s cubic-bezier(0.2, 0.72, 0.18, 1);
+  width: 100%;
+  min-height: 6rem;
+  overflow: visible;
+}
+
+.chart-grid-line,
+.chart-baseline,
+.chart-shadow-line,
+.chart-signal-line {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1;
+}
+
+.chart-baseline {
+  stroke: rgba(199, 204, 211, 0.44);
+  stroke-width: 1.25;
+}
+
+.chart-shadow-line {
+  stroke: rgba(199, 204, 211, 0.34);
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0.2;
+}
+
+.chart-signal-line {
+  stroke: url("#analytics-signal-gradient");
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  filter: drop-shadow(0 0 14px rgba(226, 59, 75, 0.32));
+  transition: stroke-dashoffset 1.35s cubic-bezier(0.2, 0.72, 0.18, 1);
+}
+
+.chart-points circle {
+  fill: var(--brand);
+  stroke: rgba(255, 255, 255, 0.86);
+  stroke-width: 2;
+  opacity: 0;
+  transform: scale(0.6);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.45s ease,
+    transform 0.65s cubic-bezier(0.2, 0.72, 0.18, 1);
+}
+
+.chart-points circle:nth-child(2) {
+  transition-delay: 140ms;
+}
+
+.chart-points circle:nth-child(3) {
+  transition-delay: 260ms;
+}
+
+.chart-points circle:nth-child(4) {
+  transition-delay: 380ms;
+}
+
+.analytics-line-metrics span {
+  display: grid;
+  gap: 0.1rem;
 }
 
 .decision-strip {
@@ -1582,16 +1658,30 @@ h6 {
 .service-panel.is-visible .workflow-map-preview i,
 .service-panel.is-featured .workflow-map-preview i,
 .service-panel:hover .workflow-map-preview i,
-.service-panel.is-visible .analytics-preview i,
-.service-panel.is-featured .analytics-preview i,
-.service-panel:hover .analytics-preview i,
-.service-panel.is-visible .analytics-preview span,
-.service-panel.is-featured .analytics-preview span,
-.service-panel:hover .analytics-preview span,
 .service-panel.is-visible .ai-pulse-preview i,
 .service-panel.is-featured .ai-pulse-preview i,
 .service-panel:hover .ai-pulse-preview i {
   transform: scaleX(1);
+}
+
+.service-panel.is-visible .analytics-line-preview::after,
+.service-panel.is-featured .analytics-line-preview::after,
+.service-panel:hover .analytics-line-preview::after {
+  opacity: 1;
+  transform: translateX(45%);
+}
+
+.service-panel.is-visible .chart-signal-line,
+.service-panel.is-featured .chart-signal-line,
+.service-panel:hover .chart-signal-line {
+  stroke-dashoffset: 0;
+}
+
+.service-panel.is-visible .chart-points circle,
+.service-panel.is-featured .chart-points circle,
+.service-panel:hover .chart-points circle {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .service-card::before {
