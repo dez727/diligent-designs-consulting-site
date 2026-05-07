@@ -11,6 +11,7 @@ type WorkflowPainPointCardProps = {
   onRatingUpdate: <TField extends WorkflowRatingField>(id: string, field: TField, value: WorkflowRatings[TField]) => void;
   onRemove: (id: string) => void;
   canRemove: boolean;
+  isRemoving?: boolean;
 };
 
 export function WorkflowPainPointCard({
@@ -18,7 +19,8 @@ export function WorkflowPainPointCard({
   onWorkflowNameUpdate,
   onRatingUpdate,
   onRemove,
-  canRemove
+  canRemove,
+  isRemoving = false
 }: WorkflowPainPointCardProps) {
   const [isConfirmingRemoval, setIsConfirmingRemoval] = useState(false);
   const workflowName = workflow.workflowName.trim() || "this workflow";
@@ -29,8 +31,8 @@ export function WorkflowPainPointCard({
   };
 
   return (
-    <article className="card p-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+    <article className={`card p-6 workflow-card${isRemoving ? " workflow-card--removing" : ""}`}>
+      <div className="workflow-card-header">
         <div className="min-w-[240px] flex-1">
           <label>
             <span className="label">Workflow Pain Point</span>
