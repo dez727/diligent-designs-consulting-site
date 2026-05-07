@@ -531,6 +531,10 @@ h6 {
   animation: loader-exit 0.8s ease 1.05s forwards;
 }
 
+.brand-loader.loader-skip {
+  display: none;
+}
+
 .brand-loader span {
   color: var(--silver);
   font-size: 0.72rem;

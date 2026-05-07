@@ -171,9 +171,13 @@ export function ScrollAnimations() {
     };
   }, []);
 
+  const loaderSeen = typeof window !== "undefined" && sessionStorage.getItem("ddc_loader_seen") === "1";
+
   return (
     <>
-      <div className="brand-loader" aria-hidden="true">
+      <div className={`brand-loader${loaderSeen ? " loader-skip" : ""}`} aria-hidden="true" onAnimationEnd={() => {
+        try { sessionStorage.setItem("ddc_loader_seen", "1"); } catch {}
+      }}>
         <span>Diligent Designs</span>
         <strong>Calibrating systems</strong>
         <i />
