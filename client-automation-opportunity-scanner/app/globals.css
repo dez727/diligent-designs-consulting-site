@@ -1671,6 +1671,9 @@ h6 {
 .testimonial {
   position: relative;
   margin-top: var(--space-6);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38rem;
   border-left: 3px solid var(--brand);
   padding: var(--space-5) var(--space-6);
   background: var(--canvas-deep);
@@ -1682,7 +1685,6 @@ h6 {
   font-size: var(--text-body-lg);
   font-style: italic;
   line-height: var(--leading-body);
-  max-width: 48rem;
 }
 
 .testimonial footer {
@@ -2311,6 +2313,33 @@ h6 {
     0 calc(var(--scroll-y, 0) * 0.04px);
 }
 
+.process-grid {
+  position: relative;
+}
+
+/* Continuous vertical bar connecting all process cards */
+.process-grid::before {
+  position: absolute;
+  left: -1px;
+  top: 1rem;
+  bottom: 1rem;
+  width: 3px;
+  background: linear-gradient(180deg, var(--brand), var(--signal-red), var(--brand));
+  border-radius: 2px;
+  content: "";
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition:
+    opacity 0.4s ease,
+    transform 1.2s cubic-bezier(0.2, 0.72, 0.18, 1);
+}
+
+.process-grid.has-active::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
 .process-grid article {
   position: relative;
   border-color: var(--line-dark);
@@ -2319,30 +2348,11 @@ h6 {
   padding: var(--space-5);
 }
 
-.process-grid article::before {
-  position: absolute;
-  inset: 1rem auto 1rem -1px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--brand), var(--signal-red));
-  content: "";
-  opacity: 0;
-  transform: scaleY(0);
-  transform-origin: top center;
-  transition:
-    opacity 0.35s ease,
-    transform 0.65s cubic-bezier(0.2, 0.72, 0.18, 1);
-}
-
 .process-grid article.is-active {
   border-color: rgba(226, 59, 75, 0.5);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 24px 70px -48px rgba(226, 59, 75, 0.9);
   transform: translate3d(0, -2px, 0) scale(1.01);
-}
-
-.process-grid article.is-active::before {
-  opacity: 1;
-  transform: scaleY(1);
 }
 
 .process-grid span {

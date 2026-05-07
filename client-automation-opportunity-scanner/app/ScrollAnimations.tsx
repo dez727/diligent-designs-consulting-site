@@ -88,6 +88,12 @@ export function ScrollAnimations() {
           const element = entry.target as HTMLElement;
           element.classList.toggle("is-active", entry.isIntersecting);
         });
+        // Toggle has-active on the process grid when any step is active
+        const grid = document.querySelector(".process-grid");
+        if (grid) {
+          const anyActive = grid.querySelector(".is-active") !== null;
+          grid.classList.toggle("has-active", anyActive);
+        }
       },
       { rootMargin: "-35% 0px -35% 0px", threshold: 0.2 }
     );
