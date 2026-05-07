@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Scanner", href: "/scanner" },
   { label: "Contact", href: "/#contact" }
 ];
@@ -19,6 +19,7 @@ export function SiteNav() {
 
   const isCurrent = (href: string) => {
     if (href === "/scanner") return isScanner;
+    if (href === "/services") return pathname === "/services";
     if (href === "/") return pathname === "/";
     return false;
   };
