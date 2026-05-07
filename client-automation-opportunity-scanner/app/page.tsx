@@ -66,14 +66,14 @@ export default function HomePage() {
         <div className="hero-grid">
           <div className="hero-copy">
             <h1 className="hero-title" data-animate="headline">
-              <span>Cleaner systems</span>
-              <span>for teams ready</span>
-              <span>to automate the</span>
-              <span>right work.</span>
+              <span>We help small</span>
+              <span>businesses automate</span>
+              <span>the work that</span>
+              <span>slows them down.</span>
             </h1>
             <p data-animate="fade-up" className="delay-1">
-              AI, automation, and digital marketing strategy for small and medium-size businesses that need clearer
-              reporting, faster follow-up, and practical systems they can trust.
+              Follow-up, reporting, lead routing, and the manual processes your team handles every week. We build the
+              systems that take care of it.
             </p>
 
             <div className="hero-actions delay-2" data-animate="fade-up">
