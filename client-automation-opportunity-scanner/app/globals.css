@@ -275,7 +275,7 @@ h6 {
   border-radius: 0.5rem;
   border: 1px solid var(--line);
   background: var(--panel);
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   font-size: var(--text-sm);
   color: var(--ink);
   outline: none;
@@ -297,7 +297,7 @@ h6 {
 
 .label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
   color: var(--blueprint);
   font-size: 0.68rem;
   font-weight: 700;
@@ -311,7 +311,7 @@ h6 {
   justify-content: center;
   border-radius: 0.5rem;
   background: var(--brand);
-  padding: 0.75rem 1.25rem;
+  padding: var(--space-3) var(--space-5);
   color: #fff;
   font-size: var(--text-sm);
   font-weight: 800;
@@ -336,7 +336,7 @@ h6 {
   border-radius: 0.5rem;
   border: 1px solid var(--line);
   background: var(--panel);
-  padding: 0.75rem 1.25rem;
+  padding: var(--space-3) var(--space-5);
   color: var(--ink);
   font-size: var(--text-sm);
   font-weight: 800;
@@ -362,12 +362,12 @@ h6 {
 .button-conversation {
   min-height: 3.35rem;
   border-color: rgba(199, 204, 211, 0.36);
-  padding-inline: 1.55rem;
+  padding-inline: var(--space-5);
   box-shadow: 0 18px 44px -34px rgba(255, 255, 255, 0.45);
 }
 
 .button-conversation::after {
-  margin-left: 0.7rem;
+  margin-left: var(--space-3);
   width: 2.2rem;
   height: 1px;
   background: linear-gradient(90deg, var(--signal-red), var(--silver));
@@ -390,7 +390,7 @@ h6 {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: var(--space-3) var(--space-5);
   color: var(--ink-soft);
   font-size: var(--text-sm);
   font-weight: 700;
@@ -441,14 +441,14 @@ h6 {
 
 .scanner-stepper {
   display: grid;
-  gap: 0.8rem;
+  gap: var(--space-3);
 }
 
 .scanner-progress-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
   color: var(--blueprint);
   font-size: 0.72rem;
   font-weight: 850;
@@ -484,14 +484,14 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.15rem;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
   border-radius: 0.5rem;
   border: 1px solid rgba(177, 18, 38, 0.24);
   background:
     linear-gradient(135deg, rgba(177, 18, 38, 0.08), rgba(199, 204, 211, 0.16)),
     rgba(255, 255, 255, 0.86);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .workflow-remove-confirmation p:not(.label) {
@@ -509,7 +509,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.65rem;
+  gap: var(--space-3);
 }
 
 .brand-loader {
@@ -519,7 +519,7 @@ h6 {
   display: grid;
   place-items: center;
   align-content: center;
-  gap: 0.9rem;
+  gap: var(--space-3);
   background:
     radial-gradient(circle at 50% 45%, rgba(177, 18, 38, 0.26), transparent 24rem),
     linear-gradient(135deg, #090a0c 0%, #171a1f 56%, #12080b 100%);
@@ -804,7 +804,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
   margin: 0 auto;
   width: min(calc(100% - 2rem), var(--site-content-width));
   border: 1px solid rgba(199, 204, 211, 0.18);
@@ -823,7 +823,7 @@ h6 {
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: var(--space-3);
   min-width: 0;
   color: #fff;
 }
@@ -850,7 +850,7 @@ h6 {
 .brand-mark strong,
 .brand-mark small {
   display: block;
-  line-height: 1.1;
+  line-height: var(--leading-display);
 }
 
 .brand-mark small {
@@ -905,7 +905,7 @@ h6 {
 .nav-toggle {
   display: none;
   align-items: center;
-  gap: 0.55rem;
+  gap: var(--space-2);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.45rem;
   background: rgba(255, 255, 255, 0.08);
@@ -972,7 +972,7 @@ h6 {
   z-index: 1;
   display: grid;
   align-items: center;
-  gap: 3rem;
+  gap: var(--space-7);
   margin: 0 auto;
   max-width: var(--site-content-width);
   padding: clamp(6.75rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 4.25rem);
@@ -1016,7 +1016,7 @@ h6 {
 }
 
 .hero-copy p {
-  margin-top: 1.5rem;
+  margin-top: var(--space-5);
   max-width: 43rem;
   color: rgba(255, 255, 255, 0.72);
   font-size: clamp(1rem, 2vw, 1.22rem);
@@ -1026,8 +1026,8 @@ h6 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
 .system-map {
@@ -1041,7 +1041,7 @@ h6 {
     rgba(255, 255, 255, 0.06);
   background-size: 24px 24px;
   box-shadow: 0 32px 80px -46px rgba(0, 0, 0, 0.9);
-  padding: 1.2rem;
+  padding: var(--space-4);
 }
 
 .system-map::before {
@@ -1059,7 +1059,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .map-header span,
@@ -1082,8 +1082,8 @@ h6 {
   display: grid;
   grid-template-columns: auto 1fr auto 1fr auto;
   align-items: center;
-  gap: 0.7rem;
-  margin: 2rem 0;
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
 }
 
 .map-dot {
@@ -1112,7 +1112,7 @@ h6 {
 
 .map-stack {
   display: grid;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .map-stack div,
@@ -1127,7 +1127,7 @@ h6 {
 .map-stack div {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
   border-color: var(--line-dark);
   background: rgba(255, 255, 255, 0.07);
   padding: 0.95rem;
@@ -1147,10 +1147,10 @@ h6 {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.1rem;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
   border-top: 1px solid var(--line-dark);
-  padding-top: 1.1rem;
+  padding-top: var(--space-4);
 }
 
 .map-score strong {
@@ -1212,7 +1212,11 @@ h6 {
 
 .intro-band {
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background:
+    linear-gradient(rgba(16, 18, 22, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 18, 22, 0.035) 1px, transparent 1px),
+    #fff;
+  background-size: 42px 42px, 42px 42px, auto;
 }
 
 .section-grid,
@@ -1231,7 +1235,7 @@ h6 {
 .scanner-feature,
 .final-cta {
   display: grid;
-  gap: 2rem;
+  gap: var(--space-6);
 }
 
 .section-grid h2,
@@ -1265,7 +1269,7 @@ h6 {
 
 .signal-list {
   display: grid;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .signal-list p {
@@ -1274,7 +1278,7 @@ h6 {
   border-left: 3px solid var(--brand);
   background: #fff;
   box-shadow: var(--shadow);
-  padding: 1rem 1.1rem;
+  padding: var(--space-4);
   color: var(--ink);
   font-weight: 800;
 }
@@ -1335,12 +1339,12 @@ h6 {
 .service-grid,
 .process-grid {
   display: grid;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .service-showcase {
   display: grid;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .service-card {
@@ -1348,14 +1352,14 @@ h6 {
   overflow: hidden;
   background: #fff;
   box-shadow: var(--shadow);
-  padding: 1.3rem;
+  padding: var(--space-5);
 }
 
 .service-panel {
   --pointer-x: 0;
   --pointer-y: 0;
   display: grid;
-  gap: 1.4rem;
+  gap: var(--space-5);
   min-height: 18rem;
   background:
     linear-gradient(rgba(16, 18, 22, 0.035) 1px, transparent 1px),
@@ -1383,8 +1387,8 @@ h6 {
 .service-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1.15rem;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 .service-tags small {
@@ -1399,7 +1403,7 @@ h6 {
 .service-visual {
   position: relative;
   display: grid;
-  gap: 0.9rem;
+  gap: var(--space-3);
   align-content: stretch;
   min-height: 10rem;
   overflow: hidden;
@@ -1408,7 +1412,7 @@ h6 {
   background:
     radial-gradient(circle at calc(50% + (var(--pointer-x) * 22%)) calc(42% + (var(--pointer-y) * 22%)), rgba(226, 59, 75, 0.22), transparent 12rem),
     linear-gradient(135deg, rgba(9, 10, 12, 0.96), rgba(23, 26, 31, 0.94) 62%, rgba(42, 17, 22, 0.95));
-  padding: 1rem;
+  padding: var(--space-4);
   color: #fff;
 }
 
@@ -1445,7 +1449,7 @@ h6 {
   display: grid;
   grid-template-columns: 1fr 2.2rem 1fr 2.2rem 1fr;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .workflow-map-preview span,
@@ -1505,7 +1509,7 @@ h6 {
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 0.65rem;
+  gap: var(--space-3);
   min-height: 8.35rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.45rem;
@@ -1536,7 +1540,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .analytics-line-header span,
@@ -1632,7 +1636,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
   padding: 0.78rem 0.85rem;
 }
 
@@ -1651,7 +1655,7 @@ h6 {
 
 .ai-routing-preview {
   display: grid;
-  gap: 0.45rem;
+  gap: var(--space-2);
 }
 
 .ai-routing-preview span {
@@ -1776,7 +1780,7 @@ h6 {
 .service-card p,
 .process-grid p,
 .panel-grid p {
-  margin-top: 0.75rem;
+  margin-top: var(--space-3);
   color: var(--ink-soft);
   font-size: 0.94rem;
   line-height: var(--leading-body);
@@ -1819,7 +1823,7 @@ h6 {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 2rem;
+  gap: var(--space-6);
   margin: 0 auto;
   max-width: var(--site-content-width);
 }
@@ -1829,7 +1833,7 @@ h6 {
 }
 
 .process-band .section-heading > p:not(.eyebrow) {
-  margin-top: 1.25rem;
+  margin-top: var(--space-5);
   max-width: 28rem;
   color: rgba(255, 255, 255, 0.62);
   font-size: var(--text-body);
@@ -1846,7 +1850,7 @@ h6 {
 
 .process-progress {
   overflow: hidden;
-  margin-top: 1.5rem;
+  margin-top: var(--space-5);
   width: min(22rem, 100%);
   height: 2px;
   background: rgba(255, 255, 255, 0.16);
@@ -1872,7 +1876,7 @@ h6 {
   border-color: var(--line-dark);
   background: rgba(255, 255, 255, 0.06);
   min-height: 11rem;
-  padding: 1.35rem;
+  padding: var(--space-5);
 }
 
 .process-grid article::before {
@@ -1908,7 +1912,7 @@ h6 {
 }
 
 .process-grid h3 {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
   color: #fff;
 }
 
@@ -1922,7 +1926,7 @@ h6 {
 }
 
 .scanner-copy p {
-  margin: 1rem 0 1.5rem;
+  margin: var(--space-4) 0 var(--space-5);
 }
 
 .scanner-panel {
@@ -1935,7 +1939,7 @@ h6 {
     #fff;
   background-size: 24px 24px;
   box-shadow: var(--shadow);
-  padding: 1.25rem;
+  padding: var(--space-5);
 }
 
 .diagnostic-panel {
@@ -1944,7 +1948,7 @@ h6 {
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 1.25rem;
+  gap: var(--space-5);
   border-color: var(--line);
   background:
     linear-gradient(rgba(16, 18, 22, 0.045) 1px, transparent 1px),
@@ -2113,7 +2117,7 @@ h6 {
   position: relative;
   z-index: 2;
   border-top: 1px solid var(--line);
-  padding-top: 1rem;
+  padding-top: var(--space-4);
 }
 
 .diagnostic-readout .panel-row span {
@@ -2126,15 +2130,15 @@ h6 {
 
 .diagnostic-bars {
   display: grid;
-  gap: 0.7rem;
-  margin: 1.25rem 0;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
 }
 
 .diagnostic-bars p {
   display: grid;
   grid-template-columns: minmax(7rem, 1fr) auto;
   align-items: center;
-  gap: 0.6rem 1rem;
+  gap: var(--space-2) var(--space-4);
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.78rem;
@@ -2265,8 +2269,8 @@ h6 {
 
 .score-bars {
   display: grid;
-  gap: 0.75rem;
-  margin: 2rem 0;
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
 }
 
 .score-bars span {
@@ -2301,14 +2305,14 @@ h6 {
 
 .panel-grid {
   display: grid;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .panel-grid p {
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   background: rgba(247, 248, 250, 0.86);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .panel-grid strong {
@@ -2375,8 +2379,8 @@ h6 {
 .contact-proof {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 1.6rem;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
 }
 
 .contact-proof span {
@@ -2423,9 +2427,9 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-4);
 }
 
 .contact-panel-heading span {
@@ -2443,13 +2447,13 @@ h6 {
 
 .contact-form {
   display: grid;
-  gap: 0.9rem;
-  margin-top: 1rem;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .form-row {
   display: grid;
-  gap: 0.9rem;
+  gap: var(--space-3);
 }
 
 .contact-form label {
@@ -2494,7 +2498,7 @@ h6 {
 .contact-consent {
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: 0.65rem;
+  gap: var(--space-3);
 }
 
 .contact-consent input {
@@ -2576,7 +2580,7 @@ h6 {
   .service-panel {
     grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 0.75fr);
     align-items: stretch;
-    padding: 1.6rem;
+    padding: var(--space-5);
   }
 
   .service-panel:nth-child(even) .service-visual {
@@ -2676,7 +2680,7 @@ h6 {
   }
 
   .brand-mark {
-    gap: 0.62rem;
+    gap: var(--space-2);
   }
 
   .brand-logo {
@@ -2695,7 +2699,7 @@ h6 {
     flex-direction: column;
     align-items: stretch;
     gap: 0.35rem;
-    padding-top: 0.55rem;
+    padding-top: var(--space-2);
   }
 
   .nav-actions.is-open {
@@ -2716,7 +2720,7 @@ h6 {
   .scanner-progress-summary {
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 
   .workflow-remove-confirmation,
@@ -2746,7 +2750,7 @@ h6 {
   }
 
   .hero-grid {
-    gap: 2rem;
+    gap: var(--space-6);
     padding-bottom: 2.5rem;
     padding-top: 7rem;
   }
@@ -2811,22 +2815,22 @@ h6 {
   }
 
   .contact-copy {
-    padding-top: 0.5rem;
+    padding-top: var(--space-2);
   }
 
   .contact-copy h2 {
-    margin-top: 0.7rem;
+    margin-top: var(--space-3);
     line-height: var(--leading-heading);
   }
 
   .contact-copy h2 + p {
-    margin-top: 1.25rem;
+    margin-top: var(--space-5);
     line-height: 1.72;
   }
 
   .diagnostic-panel {
-    gap: 1.45rem;
-    padding: 1.35rem;
+    gap: var(--space-5);
+    padding: var(--space-5);
   }
 
   .diagnostic-orbit {
@@ -2872,29 +2876,29 @@ h6 {
   }
 
   .diagnostic-readout {
-    padding-top: 1.35rem;
+    padding-top: var(--space-5);
   }
 
   .diagnostic-readout .panel-row {
     display: grid;
     grid-template-columns: minmax(6rem, 0.68fr) minmax(0, 1fr);
     align-items: start;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .diagnostic-readout .panel-row strong {
     font-size: var(--text-body);
-    line-height: 1.45;
+    line-height: var(--leading-caption);
   }
 
   .diagnostic-bars {
-    gap: 1rem;
-    margin: 1.6rem 0;
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
   }
 
   .diagnostic-bars p {
     grid-template-columns: minmax(0, 1fr) minmax(2.75rem, auto);
-    gap: 0.65rem 0.9rem;
+    gap: var(--space-3);
     padding-right: 0.15rem;
     font-size: 0.84rem;
   }
