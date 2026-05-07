@@ -60,10 +60,10 @@ export function ScannerHome() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-white/15 bg-[#f7f2e8] p-5 text-[var(--ink)]">
+            <div className="rounded-lg border border-white/15 bg-white/[0.06] p-5 text-white">
               <p className="eyebrow">Output</p>
-              <h2 className="mt-3 text-3xl text-[var(--brand-deep)]">Top 3 automation candidates</h2>
-              <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
+              <h2 className="mt-3 text-3xl text-white">Top 3 automation candidates</h2>
+              <p className="mt-3 text-sm leading-6 text-white/70">
                 Each result includes a priority score, rationale, recommended approach, and a 2026 build path.
               </p>
             </div>

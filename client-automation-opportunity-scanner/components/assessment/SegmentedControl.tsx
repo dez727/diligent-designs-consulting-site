@@ -33,7 +33,7 @@ export function SegmentedControl<TValue extends string>({
               className={`rounded-lg border px-4 py-3 text-left transition ${
                 isSelected
                   ? "border-[var(--brand-deep)] bg-[var(--brand-deep)] text-white"
-                  : "border-[var(--line)] bg-white hover:border-[var(--copper)]/40 hover:bg-[#fffaf0]"
+                  : "border-[var(--line)] bg-white hover:border-[var(--copper)]/40 hover:bg-[var(--canvas)]"
               }`}
               aria-pressed={isSelected}
             >

@@ -20,7 +20,7 @@ export function OpportunityCard({ opportunity, rank }: OpportunityCardProps) {
             {frequencyLabel} cadence · {complexityLabel} process
           </p>
         </div>
-        <span className="rounded-full border border-[var(--line)] bg-[#f3ead8] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--brand)]">
+        <span className="rounded-full border border-[var(--line)] bg-[var(--platinum)] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--brand)]">
           Priority {opportunity.priorityScore}
         </span>
       </div>
@@ -47,7 +47,7 @@ export function OpportunityCard({ opportunity, rank }: OpportunityCardProps) {
         <p>
           <span className="font-semibold text-[var(--ink)]">Recommended Approach:</span> {opportunity.approach}
         </p>
-        <div className="rounded-lg border border-[var(--line)] bg-[#fbf6ea] p-4">
+        <div className="rounded-lg border border-[var(--line)] bg-[var(--canvas)] p-4">
           <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--copper)]">2026 Build Path</p>
           <p className="mt-2 font-semibold text-[var(--ink)]">{opportunity.buildMode}</p>
           <div className="mt-3 flex flex-wrap gap-2">
