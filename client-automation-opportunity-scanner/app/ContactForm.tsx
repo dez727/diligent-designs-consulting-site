@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
+type FieldErrors = Record<string, string>;
 
 type TurnstileApi = {
   render: (
@@ -67,9 +68,27 @@ function collectAttribution() {
   return attribution;
 }
 
+function validateField(name: string, value: string): string {
+  switch (name) {
+    case "name":
+      return value.trim() ? "" : "Please enter your name.";
+    case "email":
+      if (!value.trim()) return "Please enter your email.";
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Please enter a valid email address.";
+    case "focus":
+      return value ? "" : "Please choose a focus area.";
+    case "message":
+      return value.trim().length >= 10 ? "" : "Please add at least a couple sentences about the problem.";
+    default:
+      return "";
+  }
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<Set<string>>(new Set());
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileElementRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | undefined>(undefined);
@@ -85,6 +104,20 @@ export function ContactForm() {
 
     return "";
   }, [error, status]);
+
+  const handleBlur = useCallback((event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setTouched((prev) => new Set(prev).add(name));
+    const msg = validateField(name, value);
+    setFieldErrors((prev) => ({ ...prev, [name]: msg }));
+  }, []);
+
+  const handleFieldChange = useCallback((event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    if (!touched.has(name)) return;
+    const msg = validateField(name, value);
+    setFieldErrors((prev) => ({ ...prev, [name]: msg }));
+  }, [touched]);
 
   useEffect(() => {
     collectAttribution();
@@ -153,8 +186,17 @@ export function ContactForm() {
     const message = clean(data.get("message"));
     const focusArea = clean(data.get("focus"));
 
-    if (!fullName || !email || !focusArea || message.length < 10) {
-      setError("Please include your name, email, focus area, and a short note about what is getting stuck.");
+    const requiredFields = { name: fullName, email, focus: focusArea, message };
+    const errors: FieldErrors = {};
+    for (const [field, value] of Object.entries(requiredFields)) {
+      const msg = validateField(field, value);
+      if (msg) errors[field] = msg;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setTouched(new Set(Object.keys(requiredFields)));
+      setError("Please fix the highlighted fields above.");
       setStatus("error");
       return;
     }
@@ -208,13 +250,15 @@ export function ContactForm() {
       <input aria-hidden="true" autoComplete="off" className="contact-honey" name="nickname" tabIndex={-1} />
 
       <div className="form-row">
-        <label>
+        <label className={touched.has("name") && fieldErrors.name ? "has-error" : ""}>
           <span>Name</span>
-          <input name="name" required type="text" />
+          <input name="name" required type="text" onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("name") && !!fieldErrors.name} />
+          {touched.has("name") && fieldErrors.name ? <small className="field-error" role="alert">{fieldErrors.name}</small> : null}
         </label>
-        <label>
+        <label className={touched.has("email") && fieldErrors.email ? "has-error" : ""}>
           <span>Email</span>
-          <input name="email" required type="email" />
+          <input name="email" required type="email" onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("email") && !!fieldErrors.email} />
+          {touched.has("email") && fieldErrors.email ? <small className="field-error" role="alert">{fieldErrors.email}</small> : null}
         </label>
       </div>
 
@@ -234,9 +278,9 @@ export function ContactForm() {
           <span>Website</span>
           <input name="website" placeholder="https://" type="url" />
         </label>
-        <label>
+        <label className={touched.has("focus") && fieldErrors.focus ? "has-error" : ""}>
           <span>Preferred starting point</span>
-          <select defaultValue="" name="focus" required>
+          <select defaultValue="" name="focus" required onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("focus") && !!fieldErrors.focus}>
             <option disabled value="">
               Choose a focus
             </option>
@@ -246,17 +290,22 @@ export function ContactForm() {
               </option>
             ))}
           </select>
+          {touched.has("focus") && fieldErrors.focus ? <small className="field-error" role="alert">{fieldErrors.focus}</small> : null}
         </label>
       </div>
 
-      <label>
+      <label className={touched.has("message") && fieldErrors.message ? "has-error" : ""}>
         <span>What is slowing the business down?</span>
         <textarea
           name="message"
           placeholder="A few sentences is enough. Manual follow-up, unclear reporting, disconnected tools, or an AI idea you want to make practical."
           required
           rows={5}
+          onBlur={handleBlur}
+          onChange={handleFieldChange}
+          aria-invalid={touched.has("message") && !!fieldErrors.message}
         />
+        {touched.has("message") && fieldErrors.message ? <small className="field-error" role="alert">{fieldErrors.message}</small> : null}
       </label>
 
       <label className="contact-consent">
