@@ -250,7 +250,7 @@ export default function HomePage() {
             <div className="orbit-core">
               <span>Scanner</span>
               <strong>87</strong>
-              <small>Priority score</small>
+              <small>Priority<br />score</small>
             </div>
           </div>
           <div className="diagnostic-readout">
