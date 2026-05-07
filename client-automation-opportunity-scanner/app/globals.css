@@ -479,8 +479,30 @@ h6 {
   transition: width 0.38s ease;
 }
 
+/* ── Workflow card animation ── */
+.workflow-card {
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
+  transform-origin: top center;
+}
+
+.workflow-card--removing {
+  opacity: 0;
+  transform: scale(0.96) translateY(-8px);
+  pointer-events: none;
+}
+
+/* ── Workflow card header – aligns Remove button with the input, not the label ── */
+.workflow-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
 .remove-workflow-button {
+  min-height: 3rem;
   color: var(--brand);
+  white-space: nowrap;
 }
 
 .workflow-remove-confirmation {
@@ -1523,6 +1545,11 @@ h6 {
   gap: var(--space-3);
 }
 
+.service-detail .service-copy > p {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
 .service-detail h2 {
   font-size: var(--text-h3);
   line-height: var(--leading-heading);
@@ -1544,7 +1571,7 @@ h6 {
 
 .service-detail-body > div > p {
   color: var(--ink-soft);
-  font-size: var(--text-sm);
+  font-size: var(--text-body);
   line-height: var(--leading-body);
 }
 
@@ -3352,6 +3379,11 @@ h6 {
 
   .workflow-remove-confirmation,
   .workflow-remove-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workflow-card-header {
     align-items: stretch;
     flex-direction: column;
   }

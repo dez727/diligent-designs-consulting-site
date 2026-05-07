@@ -16,9 +16,7 @@ const createWorkflow = (id: string, workflowName: string): WorkflowPainPoint => 
 export const defaultWorkflowPainPoints: WorkflowPainPoint[] = [
   createWorkflow("w1", "Lead Intake & Qualification"),
   createWorkflow("w2", "Appointment Scheduling"),
-  createWorkflow("w3", "Invoice Creation & Follow-up"),
-  createWorkflow("w4", "Customer Onboarding"),
-  createWorkflow("w5", "Weekly Reporting")
+  createWorkflow("w3", "Invoice Creation & Follow-up")
 ];
 
 const cloneWorkflow = (workflow: WorkflowPainPoint): WorkflowPainPoint => ({

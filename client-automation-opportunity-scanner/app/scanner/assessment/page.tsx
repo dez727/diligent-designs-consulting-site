@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { startTransition, useState } from "react";
+import { startTransition, useCallback, useState } from "react";
 import { StepIndicator } from "@/components/assessment/StepIndicator";
 import { BusinessDetailsForm } from "@/components/assessment/BusinessDetailsForm";
 import { WorkflowPainPointCard } from "@/components/assessment/WorkflowPainPointCard";
@@ -13,6 +13,7 @@ type WizardStep = 2 | 3;
 export default function AssessmentPage() {
   const router = useRouter();
   const { data, updateBusiness, updateWorkflowName, updateWorkflowRating, addWorkflow, removeWorkflow } = useAssessment();
+  const [removingIds, setRemovingIds] = useState<Set<string>>(new Set());
   const [wizardStep, setWizardStep] = useState<WizardStep>(2);
 
   const businessStepReady = data.business.businessName.trim().length > 0 && data.business.industry.trim().length > 0;
@@ -21,6 +22,21 @@ export default function AssessmentPage() {
   const handleNext = () => {
     setWizardStep(3);
   };
+
+  const handleAnimatedRemove = useCallback(
+    (id: string) => {
+      setRemovingIds((prev) => new Set(prev).add(id));
+      setTimeout(() => {
+        removeWorkflow(id);
+        setRemovingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(id);
+          return next;
+        });
+      }, 350);
+    },
+    [removeWorkflow]
+  );
 
   const handleSubmit = () => {
     startTransition(() => {
@@ -97,8 +113,9 @@ export default function AssessmentPage() {
                 workflow={workflow}
                 onWorkflowNameUpdate={updateWorkflowName}
                 onRatingUpdate={updateWorkflowRating}
-                onRemove={removeWorkflow}
+                onRemove={handleAnimatedRemove}
                 canRemove={data.workflows.length > 1}
+                isRemoving={removingIds.has(workflow.id)}
               />
             ))}
 
