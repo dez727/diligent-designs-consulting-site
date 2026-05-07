@@ -1405,6 +1405,23 @@ h6 {
   font-weight: 900;
 }
 
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: var(--space-4);
+  color: var(--brand);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.service-link:hover {
+  color: var(--signal-red);
+  gap: 0.55em;
+}
+
 /* ── Service visual — shared shell ──────────────────────────── */
 .service-visual {
   position: relative;

@@ -171,6 +171,9 @@ export default function HomePage() {
                     <small key={tag}>{tag}</small>
                   ))}
                 </div>
+                <a className="service-link" href="#contact">
+                  Start a conversation <span aria-hidden="true">&rarr;</span>
+                </a>
               </div>
               <div className={`service-visual service-visual-${service.visual}`} aria-hidden="true">
                 {service.visual === "workflow" ? (
