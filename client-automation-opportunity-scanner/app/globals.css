@@ -936,7 +936,7 @@ h6 {
   max-width: 56rem;
   color: #fff;
   font-size: clamp(3rem, 4.85vw, 5.25rem);
-  line-height: 0.96;
+  line-height: 1.1;
 }
 
 .hero-title span {
@@ -1111,7 +1111,7 @@ h6 {
   color: #fff;
   font-family: "Fraunces", Georgia, serif;
   font-size: 4.2rem;
-  line-height: 0.82;
+  line-height: 1.1;
   animation: score-glow 3.5s ease-in-out infinite;
 }
 
@@ -1196,7 +1196,7 @@ h6 {
   max-width: min(44rem, 100%);
   color: var(--brand-deep);
   font-size: clamp(2.35rem, 3.9vw, 3.9rem);
-  line-height: 1.08;
+  line-height: 1.2;
 }
 
 .section-grid p,
@@ -1452,7 +1452,7 @@ h6 {
   color: #fff;
   font-family: "Fraunces", Georgia, serif;
   font-size: 2.4rem;
-  line-height: 0.9;
+  line-height: 1.1;
 }
 
 .analytics-preview {
@@ -1914,7 +1914,7 @@ h6 {
   color: #fff;
   font-family: "Fraunces", Georgia, serif;
   font-size: clamp(3.8rem, 10vw, 5.6rem);
-  line-height: 0.85;
+  line-height: 1.1;
 }
 
 .orbit-node {
@@ -1937,7 +1937,7 @@ h6 {
   color: var(--brand);
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.65rem;
-  line-height: 0.9;
+  line-height: 1.1;
 }
 
 .orbit-node small {
@@ -2449,7 +2449,7 @@ h6 {
 
   .service-panel h3 {
     font-size: clamp(2.1rem, 4vw, 3.8rem);
-    line-height: 0.98;
+    line-height: 1.2;
   }
 
   .process-grid {
@@ -2510,7 +2510,7 @@ h6 {
   .scanner-copy h2,
   .final-cta h2 {
     font-size: clamp(2.55rem, 5.6vw, 3.35rem);
-    line-height: 1.08;
+    line-height: 1.2;
   }
 
   .problem-section {
@@ -2680,7 +2680,7 @@ h6 {
 
   .contact-copy h2 {
     margin-top: 0.7rem;
-    line-height: 1.03;
+    line-height: 1.2;
   }
 
   .contact-copy h2 + p {
