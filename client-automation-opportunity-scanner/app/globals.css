@@ -2458,12 +2458,12 @@ h6 {
 }
 
 .orbit-ring.middle {
-  --ring-inset: 3.1rem;
+  --ring-inset: 2.8rem;
   animation: orbit-turn 24s linear reverse infinite;
 }
 
 .orbit-ring.inner {
-  --ring-inset: 5.85rem;
+  --ring-inset: 5.4rem;
   border-color: rgba(177, 18, 38, 0.2);
 }
 
@@ -2472,8 +2472,9 @@ h6 {
   z-index: 2;
   display: grid;
   place-items: center;
-  width: 42%;
+  width: 46%;
   aspect-ratio: 1;
+  padding: var(--space-3);
   border: 1px solid rgba(177, 18, 38, 0.22);
   border-radius: 999px;
   background:
@@ -2512,8 +2513,9 @@ h6 {
   z-index: 3;
   display: grid;
   place-items: center;
-  width: clamp(4.6rem, 16vw, 5.8rem);
+  width: clamp(5rem, 17vw, 6.4rem);
   aspect-ratio: 1;
+  padding: var(--space-2);
   border: 1px solid rgba(177, 18, 38, 0.26);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
@@ -3507,21 +3509,21 @@ h6 {
   }
 
   .orbit-ring.outer {
-    --ring-inset: 0.65rem;
+    --ring-inset: 0.5rem;
   }
 
   .orbit-ring.middle {
-    --ring-inset: 3rem;
+    --ring-inset: 2.6rem;
   }
 
   .orbit-ring.inner {
-    --ring-inset: 5.2rem;
+    --ring-inset: 4.8rem;
   }
 
   .orbit-core {
     gap: 0.1rem;
-    width: 39%;
-    padding: 0.7rem;
+    width: 43%;
+    padding: 0.6rem;
   }
 
   .orbit-core strong {
@@ -3537,7 +3539,7 @@ h6 {
   }
 
   .orbit-node {
-    width: clamp(4rem, 21vw, 4.9rem);
+    width: clamp(4.4rem, 21vw, 5.2rem);
   }
 
   .orbit-node strong {
