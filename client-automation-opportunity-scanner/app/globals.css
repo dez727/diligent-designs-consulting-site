@@ -1426,6 +1426,88 @@ h6 {
   gap: 0.55em;
 }
 
+/* ── Credibility section ─────────────────────────────────────── */
+.credibility-section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.credibility-layout {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.credibility-copy {
+  max-width: 42rem;
+}
+
+.credibility-copy h2 {
+  max-width: min(38rem, 100%);
+  color: var(--brand-deep);
+  font-size: clamp(var(--text-h2), 3.9vw, var(--text-display));
+  line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
+}
+
+.credibility-copy > p {
+  margin-top: var(--space-4);
+  max-width: 38rem;
+  color: var(--ink-soft);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+}
+
+.credibility-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .credibility-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.credibility-card {
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: var(--space-5);
+  background: var(--panel);
+}
+
+.credibility-card strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--brand-deep);
+  font-size: var(--text-body);
+  font-weight: 700;
+}
+
+.credibility-card p {
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+/* ── Contact alt CTA ─────────────────────────────────────────── */
+.contact-alt {
+  margin-top: var(--space-4);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.contact-alt a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+}
+
+.contact-alt a:hover {
+  color: #fff;
+}
+
 /* ── Service visual — shared shell ──────────────────────────── */
 .service-visual {
   position: relative;

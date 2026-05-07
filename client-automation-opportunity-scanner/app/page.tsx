@@ -123,12 +123,12 @@ export default function HomePage() {
       <section className="section-band intro-band">
         <div className="section-grid">
           <div data-animate="fade-up">
-            <p className="eyebrow">Practical AI Adoption</p>
-            <h2>Build around the business you already run.</h2>
+            <p className="eyebrow">What We Actually Do</p>
+            <h2>Find the manual work costing you time, then build the system that handles it.</h2>
           </div>
           <p className="delay-1" data-animate="fade-up">
-            The goal is not more software for its own sake. It is better handoffs, cleaner data, stronger follow-up, and
-            marketing decisions that are easier to act on.
+            We look at how your team works today, identify where time is lost to repetitive tasks and disconnected tools,
+            and build focused automations, dashboards, and AI layers that make the day-to-day run smoother.
           </p>
         </div>
       </section>
@@ -137,7 +137,7 @@ export default function HomePage() {
         <div className="problem-layout">
           <div data-animate="fade-up">
             <p className="eyebrow">Where We Help</p>
-            <h2>When work is moving, but the system is not keeping up.</h2>
+            <h2>These problems sound familiar?</h2>
           </div>
           <div className="signal-list">
             {signals.map((signal, index) => (
@@ -151,8 +151,8 @@ export default function HomePage() {
 
       <section className="section-wrap services-section" id="services">
         <div className="section-heading" data-animate="fade-up">
-          <p className="eyebrow">Consulting Focus</p>
-          <h2>Strategy, automation, and analytics in one operating lane.</h2>
+          <p className="eyebrow">What You Get</p>
+          <h2>Three ways we help your team move faster.</h2>
         </div>
         <div className="service-showcase">
           {services.map((service, index) => (
@@ -329,6 +329,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section-wrap credibility-section" data-animate="fade-up">
+        <div className="credibility-layout">
+          <div className="credibility-copy">
+            <p className="eyebrow">Why Work With Us</p>
+            <h2>Real tools. Specific experience. No filler.</h2>
+            <p>
+              Diligent Designs Consulting is led by Desmond Adongo, an AI and automation consultant based in Oshkosh, WI.
+              This is not a pitch deck operation. Every engagement starts with a diagnostic, uses real scoring models,
+              and produces systems your team can actually maintain.
+            </p>
+          </div>
+          <div className="credibility-grid">
+            <div className="credibility-card" data-animate="fade-up">
+              <strong>Working diagnostic tool</strong>
+              <p>
+                The Automation Opportunity Scanner on this site is the same scoring model used in client engagements.
+                You can run it yourself before we ever talk.
+              </p>
+            </div>
+            <div className="credibility-card delay-1" data-animate="fade-up">
+              <strong>Hands-on consulting stack</strong>
+              <p>
+                Claude, n8n, Python, SQL, GA4, Looker Studio, HubSpot, and Power Automate. Not a slide deck about AI.
+                Actual implementation.
+              </p>
+            </div>
+            <div className="credibility-card delay-2" data-animate="fade-up">
+              <strong>Background that fits</strong>
+              <p>
+                UW System Board of Regents member. BS in Interactive Web Management with Digital Marketing and
+                Information Systems credentials. Currently consulting for an active investment firm on AI-assisted
+                database and workflow automation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section-band process-band" data-process-band>
         <span className="section-side-label" aria-hidden="true">
           Operating method
@@ -426,6 +464,10 @@ export default function HomePage() {
             <span>No pressure pitch</span>
             <span>Practical next step</span>
           </div>
+          <p className="contact-alt">
+            Not ready for a conversation yet?{" "}
+            <Link href="/scanner">Run the Scanner first</Link> and see where your workflows stand.
+          </p>
         </div>
         <div className="contact-panel delay-1" data-animate="fade-up">
           <div className="contact-panel-heading">
