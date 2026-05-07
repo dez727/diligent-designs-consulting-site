@@ -1147,7 +1147,7 @@ h6 {
 .section-band,
 .section-wrap,
 .final-cta {
-  padding: 5rem 1.25rem;
+  padding: clamp(4.5rem, 7vw, 6.5rem) 1.25rem;
 }
 
 .intro-band {
@@ -1179,10 +1179,10 @@ h6 {
 .section-heading h2,
 .scanner-copy h2,
 .final-cta h2 {
-  max-width: 48rem;
+  max-width: min(48rem, 100%);
   color: var(--brand-deep);
-  font-size: clamp(2.2rem, 5vw, 4.6rem);
-  line-height: 0.98;
+  font-size: clamp(2.45rem, 4.6vw, 4.35rem);
+  line-height: 1.03;
 }
 
 .section-grid p,
@@ -1200,8 +1200,8 @@ h6 {
 .problem-section {
   display: grid;
   align-items: center;
-  min-height: clamp(42rem, 86vh, 56rem);
-  padding-bottom: clamp(6.5rem, 9vw, 9rem);
+  min-height: clamp(34rem, 70vh, 45rem);
+  padding-bottom: clamp(4.5rem, 7vw, 6.75rem);
 }
 
 .signal-list {
@@ -1256,7 +1256,7 @@ h6 {
 
 .services-section {
   position: relative;
-  padding-top: clamp(5.5rem, 8vw, 7.5rem);
+  padding-top: clamp(4.75rem, 7vw, 6.75rem);
 }
 
 .services-section::before {
@@ -2476,6 +2476,42 @@ h6 {
   }
 }
 
+@media (min-width: 641px) and (max-width: 980px) {
+  .section-grid,
+  .problem-layout,
+  .section-heading,
+  .scanner-feature,
+  .final-cta {
+    max-width: min(100%, 40rem);
+  }
+
+  .section-grid,
+  .problem-layout,
+  .scanner-feature,
+  .final-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .section-grid h2,
+  .problem-layout h2,
+  .section-heading h2,
+  .scanner-copy h2,
+  .final-cta h2 {
+    font-size: clamp(3rem, 7vw, 4.1rem);
+    line-height: 1.04;
+  }
+
+  .problem-section {
+    min-height: auto;
+    padding-top: 5.75rem;
+    padding-bottom: 5.75rem;
+  }
+
+  .services-section {
+    padding-top: 5.5rem;
+  }
+}
+
 @media (max-width: 640px) {
   .hero-shell,
   .section-band,
@@ -2600,11 +2636,12 @@ h6 {
 
   .problem-section {
     min-height: auto;
-    padding-bottom: 5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
   }
 
   .services-section {
-    padding-top: 4.75rem;
+    padding-top: 4.5rem;
   }
 
   .motion-ready [data-animate="signal"] {
