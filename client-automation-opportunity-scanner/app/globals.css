@@ -2670,6 +2670,29 @@ h6 {
   color: #ffb4bd;
 }
 
+.field-error {
+  display: block;
+  margin-top: 0.35rem;
+  color: #ffb4bd;
+  font-size: var(--text-xs);
+  font-family: var(--font-sans);
+  line-height: var(--leading-caption);
+}
+
+.contact-form label.has-error input,
+.contact-form label.has-error select,
+.contact-form label.has-error textarea {
+  border-color: rgba(226, 59, 75, 0.6);
+  box-shadow: 0 0 0 2px rgba(226, 59, 75, 0.15);
+}
+
+.contact-form label.has-error input:focus,
+.contact-form label.has-error select:focus,
+.contact-form label.has-error textarea:focus {
+  border-color: rgba(226, 59, 75, 0.85);
+  box-shadow: 0 0 0 3px rgba(226, 59, 75, 0.25);
+}
+
 .contact-honey {
   position: absolute;
   left: -9999px;
