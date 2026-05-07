@@ -198,6 +198,7 @@ h5,
 h6 {
   font-family: "Fraunces", Georgia, serif;
   letter-spacing: 0;
+  padding-block: 0.08em;
 }
 
 ::selection {
