@@ -2836,6 +2836,58 @@ h6 {
   letter-spacing: 0.02em;
 }
 
+/* ── 404 page ────────────────────────────────────────────────── */
+.not-found-page {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  padding: var(--section-y) var(--site-gutter);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(177, 18, 38, 0.08), transparent 28rem),
+    var(--canvas);
+}
+
+.not-found-content {
+  max-width: 36rem;
+  text-align: center;
+}
+
+.not-found-code {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.not-found-content h1 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+}
+
+.not-found-content p {
+  margin-bottom: var(--space-6);
+  color: var(--ink-soft);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.not-found-actions .button-secondary {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
 @media (min-width: 760px) {
   .scroll-depth {
     display: block;
