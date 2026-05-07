@@ -984,8 +984,9 @@ h6 {
 .hero-copy h1 {
   max-width: 56rem;
   color: #fff;
-  font-size: clamp(3rem, 4.85vw, 5.25rem);
+  font-size: clamp(3rem, 4.85vw, var(--text-hero));
   line-height: var(--leading-display);
+  letter-spacing: -0.02em;
 }
 
 .hero-title span {
@@ -1248,8 +1249,9 @@ h6 {
 .final-cta h2 {
   max-width: min(44rem, 100%);
   color: var(--brand-deep);
-  font-size: clamp(2.35rem, 3.9vw, 3.9rem);
+  font-size: clamp(var(--text-h2), 3.9vw, var(--text-display));
   line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
 }
 
 .section-grid p,
@@ -2817,7 +2819,7 @@ h6 {
   }
 
   .service-panel h3 {
-    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    font-size: clamp(var(--text-h3), 3vw, var(--text-h2));
     line-height: var(--leading-heading);
   }
 
@@ -2883,7 +2885,7 @@ h6 {
   .section-heading h2,
   .scanner-copy h2,
   .final-cta h2 {
-    font-size: clamp(var(--text-h2), 5.6vw, 3.35rem);
+    font-size: clamp(var(--text-h2), 5.6vw, var(--text-h1));
     line-height: var(--leading-heading);
   }
 
