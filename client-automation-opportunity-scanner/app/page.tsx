@@ -67,13 +67,13 @@ export default function HomePage() {
           <div className="hero-copy">
             <h1 className="hero-title" data-animate="headline">
               <span>We help small</span>
-              <span>businesses automate</span>
-              <span>the work that</span>
-              <span>slows them down.</span>
+              <span>businesses run</span>
+              <span>smoother and make</span>
+              <span>better decisions.</span>
             </h1>
             <p data-animate="fade-up" className="delay-1">
-              Follow-up, reporting, lead routing, and the manual processes your team handles every week. We build the
-              systems that take care of it.
+              Automation, marketing analytics, and practical AI for teams that want less manual work and clearer data
+              to act on.
             </p>
 
             <div className="hero-actions delay-2" data-animate="fade-up">
