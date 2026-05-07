@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { AssessmentProvider } from "@/app/providers";
 import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Diligent Designs Consulting | AI, Automation, and Marketing Analytics",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           </a>
           <SiteNav />
           {children}
+          <SiteFooter />
         </AssessmentProvider>
       </body>
     </html>
