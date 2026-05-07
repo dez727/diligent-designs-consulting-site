@@ -364,6 +364,18 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+          <blockquote className="testimonial" data-animate="fade-up">
+            <p>
+              He takes the time to truly understand your business and goals. He helped me build several Zapier
+              automations and devoted a lot of time to making sure we achieved our objectives. He even helped me
+              understand how the systems worked, making him a great person to work with if you are not tech-savvy.
+              His attention to detail is excellent.
+            </p>
+            <footer>
+              <strong>Anna</strong>
+              <span>Florence Strings</span>
+            </footer>
+          </blockquote>
         </div>
       </section>
 

@@ -1489,6 +1489,51 @@ h6 {
   line-height: var(--leading-body);
 }
 
+/* ── Testimonial ─────────────────────────────────────────────── */
+.testimonial {
+  position: relative;
+  margin-top: var(--space-6);
+  border-left: 3px solid var(--brand);
+  padding: var(--space-5) var(--space-6);
+  background: var(--canvas-deep);
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.testimonial p {
+  color: var(--ink);
+  font-size: var(--text-body-lg);
+  font-style: italic;
+  line-height: var(--leading-body);
+  max-width: 48rem;
+}
+
+.testimonial footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.testimonial footer strong {
+  color: var(--brand-deep);
+  font-size: var(--text-body);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.testimonial footer span {
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-style: normal;
+}
+
+.testimonial footer strong::after {
+  content: "\2014";
+  margin-left: var(--space-3);
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
 /* ── Contact alt CTA ─────────────────────────────────────────── */
 .contact-alt {
   margin-top: var(--space-4);
