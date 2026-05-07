@@ -23,6 +23,7 @@
   --signal-red: #e23b4b;
   --shadow: 0 28px 70px -42px rgba(9, 10, 12, 0.62);
   --scroll-progress: 0;
+  --site-content-width: 76rem;
 }
 
 * {
@@ -45,6 +46,12 @@ body {
     linear-gradient(90deg, rgba(16, 18, 22, 0.035) 1px, transparent 1px),
     linear-gradient(145deg, #ffffff 0%, var(--canvas) 52%, var(--canvas-deep) 100%);
   background-size: 42px 42px, 42px 42px, auto;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-content-width: min(80vw, 76rem);
+  }
 }
 
 @keyframes rise-in {
@@ -747,7 +754,7 @@ h6 {
   justify-content: space-between;
   gap: 1rem;
   margin: 0 auto;
-  width: min(calc(100% - 2rem), 76rem);
+  width: min(calc(100% - 2rem), var(--site-content-width));
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.5rem;
   background: rgba(9, 10, 12, 0.62);
@@ -915,14 +922,14 @@ h6 {
   align-items: center;
   gap: 3rem;
   margin: 0 auto;
-  max-width: 76rem;
+  max-width: var(--site-content-width);
   padding: 8rem 0 3.75rem;
 }
 
 .hero-copy h1 {
   max-width: 56rem;
   color: #fff;
-  font-size: clamp(3.25rem, 8.2vw, 6.9rem);
+  font-size: clamp(3.25rem, 5.2vw, 5.6rem);
   line-height: 0.92;
 }
 
@@ -1163,7 +1170,7 @@ h6 {
 .scanner-feature,
 .final-cta {
   margin: 0 auto;
-  max-width: 76rem;
+  max-width: var(--site-content-width);
 }
 
 .section-grid,
@@ -1263,7 +1270,7 @@ h6 {
   position: absolute;
   top: 0;
   left: 50%;
-  width: min(76rem, calc(100% - 2.5rem));
+  width: min(var(--site-content-width), calc(100% - 2.5rem));
   height: 1px;
   background: linear-gradient(90deg, rgba(177, 18, 38, 0.64), rgba(16, 18, 22, 0.12), transparent);
   content: "";
@@ -1673,7 +1680,7 @@ h6 {
   display: grid;
   gap: 2rem;
   margin: 0 auto;
-  max-width: 76rem;
+  max-width: var(--site-content-width);
 }
 
 .process-band .section-heading h2 {
@@ -2208,7 +2215,7 @@ h6 {
   margin: 0;
   padding:
     clamp(5rem, 8vw, 7.5rem)
-    max(1.25rem, calc((100vw - 76rem) / 2 + 1.25rem));
+    max(1.25rem, calc((100vw - var(--site-content-width)) / 2 + 1.25rem));
   scroll-margin-top: 6rem;
 }
 
