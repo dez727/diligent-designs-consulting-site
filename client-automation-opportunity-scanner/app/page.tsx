@@ -41,7 +41,7 @@ export default function HomePage() {
           <div className="hero-copy">
             <h1 className="hero-title" data-animate="headline">
               <span>Let us discover</span>
-              <span>what's slowing your</span>
+              <span>what&apos;s slowing your</span>
               <span>operations down,</span>
               <span>then build the</span>
               <span>right solution.</span>
