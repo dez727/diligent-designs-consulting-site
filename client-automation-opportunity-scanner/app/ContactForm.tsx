@@ -76,7 +76,7 @@ function validateField(name: string, value: string): string {
       if (!value.trim()) return "Please enter your email.";
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Please enter a valid email address.";
     case "focus":
-      return value ? "" : "Please choose a focus area.";
+      return "";
     case "message":
       return value.trim().length >= 10 ? "" : "Please add at least a couple sentences about the problem.";
     default:
@@ -90,6 +90,7 @@ export function ContactForm() {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState<Set<string>>(new Set());
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [showOptional, setShowOptional] = useState(false);
   const turnstileElementRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | undefined>(undefined);
 
@@ -186,7 +187,7 @@ export function ContactForm() {
     const message = clean(data.get("message"));
     const focusArea = clean(data.get("focus"));
 
-    const requiredFields = { name: fullName, email, focus: focusArea, message };
+    const requiredFields = { name: fullName, email, message };
     const errors: FieldErrors = {};
     for (const [field, value] of Object.entries(requiredFields)) {
       const msg = validateField(field, value);
@@ -251,51 +252,19 @@ export function ContactForm() {
 
       <div className="form-row">
         <label className={touched.has("name") && fieldErrors.name ? "has-error" : ""}>
-          <span>Name</span>
+          <span>Name <abbr className="required" title="required">*</abbr></span>
           <input name="name" required type="text" onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("name") && !!fieldErrors.name} />
           {touched.has("name") && fieldErrors.name ? <small className="field-error" role="alert">{fieldErrors.name}</small> : null}
         </label>
         <label className={touched.has("email") && fieldErrors.email ? "has-error" : ""}>
-          <span>Email</span>
+          <span>Email <abbr className="required" title="required">*</abbr></span>
           <input name="email" required type="email" onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("email") && !!fieldErrors.email} />
           {touched.has("email") && fieldErrors.email ? <small className="field-error" role="alert">{fieldErrors.email}</small> : null}
         </label>
       </div>
 
-      <div className="form-row">
-        <label>
-          <span>Company</span>
-          <input name="company" type="text" />
-        </label>
-        <label>
-          <span>Phone</span>
-          <input autoComplete="tel" name="phone" type="tel" />
-        </label>
-      </div>
-
-      <div className="form-row">
-        <label>
-          <span>Website</span>
-          <input name="website" placeholder="https://" type="url" />
-        </label>
-        <label className={touched.has("focus") && fieldErrors.focus ? "has-error" : ""}>
-          <span>Preferred starting point</span>
-          <select defaultValue="" name="focus" required onBlur={handleBlur} onChange={handleFieldChange} aria-invalid={touched.has("focus") && !!fieldErrors.focus}>
-            <option disabled value="">
-              Choose a focus
-            </option>
-            {focusOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          {touched.has("focus") && fieldErrors.focus ? <small className="field-error" role="alert">{fieldErrors.focus}</small> : null}
-        </label>
-      </div>
-
       <label className={touched.has("message") && fieldErrors.message ? "has-error" : ""}>
-        <span>What is slowing the business down?</span>
+        <span>What is slowing the business down? <abbr className="required" title="required">*</abbr></span>
         <textarea
           name="message"
           placeholder="A few sentences is enough. Manual follow-up, unclear reporting, disconnected tools, or an AI idea you want to make practical."
@@ -308,10 +277,55 @@ export function ContactForm() {
         {touched.has("message") && fieldErrors.message ? <small className="field-error" role="alert">{fieldErrors.message}</small> : null}
       </label>
 
+      <button
+        className="optional-toggle"
+        type="button"
+        aria-expanded={showOptional}
+        onClick={() => setShowOptional((prev) => !prev)}
+      >
+        <span>Add company details</span>
+        <span className={`optional-chevron ${showOptional ? "open" : ""}`} aria-hidden="true">&#x25BE;</span>
+      </button>
+
+      {showOptional ? (
+        <div className="optional-fields">
+          <div className="form-row">
+            <label>
+              <span>Company <span className="optional-label">(optional)</span></span>
+              <input name="company" type="text" />
+            </label>
+            <label>
+              <span>Phone <span className="optional-label">(optional)</span></span>
+              <input autoComplete="tel" name="phone" type="tel" />
+            </label>
+          </div>
+          <div className="form-row">
+            <label>
+              <span>Website <span className="optional-label">(optional)</span></span>
+              <input name="website" placeholder="https://" type="url" />
+            </label>
+            <label>
+              <span>Preferred starting point <span className="optional-label">(optional)</span></span>
+              <select defaultValue="" name="focus">
+                <option disabled value="">
+                  Choose a focus
+                </option>
+                {focusOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
+      ) : null}
+
       <label className="contact-consent">
         <input name="consent" required type="checkbox" />
         <span>I agree to be contacted about this request.</span>
       </label>
+      <p className="contact-privacy">Your information is only used to respond to this request. No lists, no spam.</p>
 
       {turnstileSiteKey ? <div ref={turnstileElementRef} className="turnstile-widget" /> : null}
 

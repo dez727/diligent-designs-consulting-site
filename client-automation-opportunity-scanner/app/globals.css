@@ -2374,6 +2374,39 @@ h6 {
   color: rgba(255, 255, 255, 0.66);
 }
 
+.process-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.process-cta-divider {
+  width: 1px;
+  height: 1rem;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.link-arrow {
+  color: var(--signal-red);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.link-arrow::after {
+  content: " \2192";
+}
+
+.link-arrow:hover {
+  color: #fff;
+}
+
 .scanner-feature {
   align-items: center;
   scroll-margin-top: 6rem;
@@ -2983,6 +3016,66 @@ h6 {
   text-transform: none;
   font-size: 0.78rem;
   line-height: var(--leading-body);
+}
+
+.contact-privacy {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.72rem;
+  line-height: var(--leading-caption);
+}
+
+.required {
+  color: var(--signal-red);
+  text-decoration: none;
+  font-style: normal;
+}
+
+.optional-label {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+  font-size: 0.72rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.optional-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.optional-toggle:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.optional-chevron {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 0.9em;
+}
+
+.optional-chevron.open {
+  transform: rotate(180deg);
+}
+
+.optional-fields {
+  display: grid;
+  gap: var(--space-4);
+  animation: fade-in-fields 0.25s ease;
+}
+
+@keyframes fade-in-fields {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .turnstile-widget {
