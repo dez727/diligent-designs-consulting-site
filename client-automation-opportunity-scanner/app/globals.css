@@ -3205,8 +3205,8 @@ h6 {
 
   .process-band {
     min-height: 100vh;
-    padding-bottom: clamp(3.75rem, 5vw, 5rem);
-    padding-top: clamp(3.75rem, 5vw, 5rem);
+    padding-bottom: var(--section-y);
+    padding-top: var(--section-y);
   }
 
   .hero-grid,
