@@ -20,8 +20,8 @@ export function OpportunityCard({ opportunity, rank }: OpportunityCardProps) {
             {frequencyLabel} cadence · {complexityLabel} process
           </p>
         </div>
-        <span className="rounded-full border border-[var(--line)] bg-[var(--platinum)] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--brand)]">
-          Priority {opportunity.priorityScore}
+        <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--brand)]">
+          <span className="font-bold text-[var(--signal-red)]">✓</span> Priority {opportunity.priorityScore}
         </span>
       </div>
 
@@ -50,13 +50,13 @@ export function OpportunityCard({ opportunity, rank }: OpportunityCardProps) {
         <div className="rounded-lg border border-[var(--line)] bg-[var(--canvas)] p-4">
           <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--copper)]">2026 Build Path</p>
           <p className="mt-2 font-semibold text-[var(--ink)]">{opportunity.buildMode}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
             {opportunity.buildOptions.map((option) => (
               <span
                 key={option}
-                className="rounded-full border border-[var(--line)] bg-white px-3 py-1 text-xs font-bold text-[var(--brand)]"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--ink-soft)]"
               >
-                {option}
+                <span className="font-bold text-[var(--signal-red)]">✓</span>{option}
               </span>
             ))}
           </div>

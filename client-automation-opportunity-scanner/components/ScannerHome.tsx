@@ -8,8 +8,8 @@ export function ScannerHome() {
         <div className="flex flex-col justify-between p-7 md:p-12">
           <div className="flex items-center justify-between gap-4">
             <p className="eyebrow">Diligent Designs Consulting</p>
-            <span className="hidden rounded-full border border-[var(--line)] px-3 py-1 text-xs font-bold text-[var(--ink-soft)] sm:inline-flex">
-              Diagnostic 01
+            <span className="hidden items-center gap-1.5 text-xs text-[var(--ink-soft)] sm:inline-flex">
+              <span className="font-bold text-[var(--signal-red)]">✓</span> Diagnostic 01
             </span>
           </div>
 
