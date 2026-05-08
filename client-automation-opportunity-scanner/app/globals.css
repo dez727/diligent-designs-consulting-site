@@ -1267,6 +1267,10 @@ h6 {
   gap: var(--space-6);
 }
 
+.section-grid {
+  align-items: center;
+}
+
 .section-grid h2,
 .problem-layout h2,
 .section-heading h2,
