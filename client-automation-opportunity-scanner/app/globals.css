@@ -318,11 +318,13 @@ h6 {
   color: #fff;
   font-size: var(--text-sm);
   font-weight: 800;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
   transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
 
 .button-primary:hover {
-  transform: translateY(-2px);
+  transform: translate3d(0, -2px, 0);
   background: #7a0e1a;
 }
 
