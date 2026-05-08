@@ -3010,14 +3010,13 @@ h6 {
 
 .contact-consent {
   grid-template-columns: auto 1fr;
-  align-items: start;
+  align-items: center;
   gap: var(--space-3);
 }
 
 .contact-consent input {
   width: 1rem;
   height: 1rem;
-  margin-top: 0.14rem;
   accent-color: var(--brand);
 }
 
