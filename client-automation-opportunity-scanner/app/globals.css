@@ -2281,7 +2281,7 @@ h6 {
 }
 
 .process-band .eyebrow {
-  color: var(--silver);
+  color: var(--signal-red);
 }
 
 .process-heading {
@@ -2814,7 +2814,7 @@ h6 {
 }
 
 .contact-copy .eyebrow {
-  color: var(--silver);
+  color: var(--signal-red);
 }
 
 .contact-copy h2 {
