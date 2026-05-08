@@ -40,10 +40,11 @@ export default function HomePage() {
         <div className="hero-grid">
           <div className="hero-copy">
             <h1 className="hero-title" data-animate="headline">
-              <span>We help small</span>
-              <span>businesses run</span>
-              <span>smoother and make</span>
-              <span>better decisions.</span>
+              <span>Let us discover</span>
+              <span>what's slowing your</span>
+              <span>operations down,</span>
+              <span>then build the</span>
+              <span>right solution.</span>
             </h1>
             <p data-animate="fade-up" className="delay-1">
               Automation, marketing analytics, and practical AI for teams that want less manual work and clearer data
