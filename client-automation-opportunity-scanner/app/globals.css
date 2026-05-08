@@ -1299,6 +1299,9 @@ h6 {
   display: grid;
   align-items: center;
   min-height: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(16, 18, 22, 0.018);
 }
 
 .signal-list {
