@@ -29,9 +29,9 @@ export function ScannerHome() {
               <Link className="button-primary" href="/scanner/assessment">
                 Start the Scanner
               </Link>
-              <a className="button-secondary" href="mailto:hello@diligentdesignsconsulting.com">
+              <Link className="button-secondary" href="/#contact">
                 Discuss a Process Audit
-              </a>
+              </Link>
             </div>
           </div>
 
