@@ -194,6 +194,18 @@ export default function HomePage() {
               <span>Florence Strings</span>
             </footer>
           </blockquote>
+          <blockquote className="testimonial delay-1" data-animate="fade-up">
+            <p>
+              He had a remarkable ability to take concepts and ground them immediately in my own real-world
+              projects, making everything relevant and accessible rather than abstract or overwhelming. His
+              diligence and attentiveness made what could have been an intimidating process into something
+              genuinely enjoyable. I recommend Desmond without reservation.
+            </p>
+            <footer>
+              <strong>Matt Mikkelsen</strong>
+              <span>Speed Investments LLC</span>
+            </footer>
+          </blockquote>
         </div>
       </section>
 
