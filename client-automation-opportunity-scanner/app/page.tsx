@@ -221,6 +221,15 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+          <div className="process-cta" data-animate="fade-up">
+            <Link className="link-arrow" href="/scanner">
+              See where your workflows stand
+            </Link>
+            <span className="process-cta-divider" aria-hidden="true" />
+            <Link className="link-arrow" href="/#contact">
+              Start with step one
+            </Link>
+          </div>
         </div>
       </section>
 
