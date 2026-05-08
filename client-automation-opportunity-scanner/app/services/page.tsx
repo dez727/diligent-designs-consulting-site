@@ -89,6 +89,57 @@ export default function ServicesPage() {
         ))}
       </section>
 
+      <section className="engagement-section">
+        <div className="engagement-inner" data-animate="fade-up">
+          <p className="eyebrow">How It Works</p>
+          <h2>A focused, four-week engagement.</h2>
+          <p className="engagement-subtitle">
+            Every project follows the same structure: understand the problem first, build second, hand off a working
+            system your team can maintain.
+          </p>
+        </div>
+        <div className="engagement-timeline">
+          <div className="timeline-step" data-animate="fade-up">
+            <span className="timeline-week">Week 1</span>
+            <h3>Diagnostic</h3>
+            <p>
+              Map the workflow as it actually runs. Identify where time is lost, where handoffs break, and which
+              process is worth automating first.
+            </p>
+          </div>
+          <div className="timeline-step delay-1" data-animate="fade-up">
+            <span className="timeline-week">Weeks 2&ndash;3</span>
+            <h3>Build</h3>
+            <p>
+              Design and implement the automation, dashboard, or AI layer. You see working drafts throughout, not a
+              reveal at the end.
+            </p>
+          </div>
+          <div className="timeline-step delay-2" data-animate="fade-up">
+            <span className="timeline-week">Week 4</span>
+            <h3>Handoff</h3>
+            <p>
+              Deploy, document, and train your team. You walk away with a system that runs without us and a clear
+              recommendation for the next improvement.
+            </p>
+          </div>
+        </div>
+        <div className="engagement-details" data-animate="fade-up">
+          <div className="engagement-detail-card">
+            <strong>First conversation</strong>
+            <p>Free 30-minute discovery call. No pitch, just a clear read on what to clean up first.</p>
+          </div>
+          <div className="engagement-detail-card">
+            <strong>Pricing model</strong>
+            <p>Project-based pricing. No retainers, no hourly surprises. Scope and cost are agreed upfront.</p>
+          </div>
+          <div className="engagement-detail-card">
+            <strong>Starting point</strong>
+            <p>Most engagements begin with a paid diagnostic that produces a concrete roadmap you can act on.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="services-cta" data-animate="fade-up">
         <h2>Not sure which one fits?</h2>
         <p>

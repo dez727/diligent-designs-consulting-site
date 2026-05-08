@@ -1586,6 +1586,117 @@ h6 {
   line-height: var(--leading-body);
 }
 
+/* ── Engagement section (services page) ─────────────────────── */
+.engagement-section {
+  max-width: var(--site-content-width);
+  margin: 0 auto;
+  padding: var(--section-y) var(--site-gutter);
+}
+
+.engagement-inner {
+  max-width: 38rem;
+}
+
+.engagement-inner h2 {
+  color: var(--brand-deep);
+  font-size: clamp(var(--text-h3), 3.2vw, var(--text-h2));
+  line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
+}
+
+.engagement-subtitle {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+}
+
+.engagement-timeline {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 640px) {
+  .engagement-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.timeline-step {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: var(--space-5);
+  background: var(--panel);
+}
+
+.timeline-step::before {
+  position: absolute;
+  top: var(--space-5);
+  left: -1px;
+  width: 3px;
+  height: 2rem;
+  background: var(--signal-red);
+  border-radius: 0 2px 2px 0;
+  content: "";
+}
+
+.timeline-week {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--signal-red);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.timeline-step h3 {
+  color: var(--brand-deep);
+  font-size: var(--text-h4);
+  line-height: var(--leading-heading);
+}
+
+.timeline-step p {
+  margin-top: var(--space-3);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.engagement-details {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .engagement-details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.engagement-detail-card {
+  border-radius: 0.75rem;
+  padding: var(--space-5);
+  background: var(--canvas-deep);
+}
+
+.engagement-detail-card strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--brand-deep);
+  font-size: var(--text-body);
+  font-weight: 700;
+}
+
+.engagement-detail-card p {
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
 .services-cta {
   max-width: var(--site-content-width);
   margin: 0 auto;
