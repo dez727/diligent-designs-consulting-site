@@ -182,30 +182,32 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <blockquote className="testimonial" data-animate="fade-up">
-            <p>
-              He takes the time to truly understand your business and goals. He helped me build several Zapier
-              automations and devoted a lot of time to making sure we achieved our objectives. He even helped me
-              understand how the systems worked, making him a great person to work with if you are not tech-savvy.
-              His attention to detail is excellent.
-            </p>
-            <footer>
-              <strong>Anna</strong>
-              <span>Florence Strings</span>
-            </footer>
-          </blockquote>
-          <blockquote className="testimonial delay-1" data-animate="fade-up">
-            <p>
-              He had a remarkable ability to take concepts and ground them immediately in my own real-world
-              projects, making everything relevant and accessible rather than abstract or overwhelming. His
-              diligence and attentiveness made what could have been an intimidating process into something
-              genuinely enjoyable. I recommend Desmond without reservation.
-            </p>
-            <footer>
-              <strong>Matt Mikkelsen</strong>
-              <span>Speed Investments LLC</span>
-            </footer>
-          </blockquote>
+          <div className="testimonial-grid">
+            <blockquote className="testimonial" data-animate="fade-up">
+              <p>
+                He takes the time to truly understand your business and goals. He helped me build several Zapier
+                automations and devoted a lot of time to making sure we achieved our objectives. He even helped me
+                understand how the systems worked, making him a great person to work with if you are not tech-savvy.
+                His attention to detail is excellent.
+              </p>
+              <footer>
+                <strong>Anna H.</strong>
+                <span>Florence Strings</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial delay-1" data-animate="fade-up">
+              <p>
+                He had a remarkable ability to take concepts and ground them immediately in my own real-world
+                projects, making everything relevant and accessible rather than abstract or overwhelming. His
+                diligence and attentiveness made what could have been an intimidating process into something
+                genuinely enjoyable. I recommend Desmond without reservation.
+              </p>
+              <footer>
+                <strong>Matt M.</strong>
+                <span>Speed Investments LLC</span>
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 
