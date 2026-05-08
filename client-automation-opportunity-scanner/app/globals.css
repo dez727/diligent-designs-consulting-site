@@ -2824,18 +2824,23 @@ h6 {
 .contact-proof {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-1) var(--space-4);
   margin-top: var(--space-5);
 }
 
 .contact-proof span {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 0.48rem 0.68rem;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.72rem;
-  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.contact-proof span::before {
+  content: "✓";
+  color: var(--signal-red);
+  font-weight: 700;
 }
 
 .contact-panel {
@@ -3576,7 +3581,7 @@ h6 {
   }
 
   .contact-proof {
-    display: grid;
+    flex-direction: column;
   }
 
   /* Service visual mobile overrides */
